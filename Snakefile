@@ -36,7 +36,7 @@ rule filter:
           - excluding strains prior to {params.min_date}
         """
     input:
-        sequences = "data/input/sequences_h5nx_{segment}.fasta",
+        sequences = "data/h5nx/{segment}/sequences.fasta",
         metadata = files.input_metadata,
         include = "data/config/include_strains.txt",
         exclude = "data/config/exclude_strains.txt"
