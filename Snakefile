@@ -4,6 +4,16 @@ rule all:
     input:
         auspice_json = expand("auspice/h5nx_{segment}.json", segment=SEGMENTS)
 
+rule unzip_h5nx:
+    input:
+        "h5-data-updates/h5nx.zip"
+    output:
+        expand("data/h5nx/{segment}/sequences.fasta", segment=SEGMENTS)
+    shell:
+        """
+            unzip -o h5-data-updates/h5nx.zip -d data/
+        """
+
 rule files:
     params:
         input_metadata = "data/input/metadata.tsv",
