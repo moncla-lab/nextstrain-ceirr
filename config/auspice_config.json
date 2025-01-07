@@ -1,0 +1,92 @@
+{
+  "title": "HPAI outbreak in North America 2021-present",
+  "maintainers": [
+    {"name": "Anna Jaeger. Made possible by the avian influenza team at USDA"}
+  ],
+  "build_url": "",
+  "data_provenance": [
+    {
+      "name": "GISAID"
+    }
+  ],
+  "colorings": [
+    {
+      "key": "gt",
+      "title": "Genotype",
+      "type": "categorical"
+    },
+    {
+      "key": "num_date",
+      "title": "Date",
+      "type": "continuous"
+    },
+    {
+      "key": "country",
+      "title": "Country",
+      "type": "categorical"
+    },
+    {
+      "key": "region",
+      "title": "Region",
+      "type": "categorical"
+    },
+    {
+      "key": "host",
+      "title": "Host",
+      "type": "categorical"
+    },
+      {
+      "key": "h5_label_clade",
+      "title": "Clade",
+      "type": "categorical"
+    },
+    {
+      "key": "Domestic_Status",
+      "title": "Domestic Status",
+      "type": "categorical"
+    },
+          {
+      "key": "flyway",
+      "title": "Flyway",
+      "type": "categorical"
+    },          {
+      "key": "order",
+      "title": "Order",
+      "type": "categorical"
+    },
+              {
+      "key": "species_group",
+      "title": "Species- Grouped",
+      "type": "categorical"
+    },
+          {
+      "key": "geo_region_na",
+      "title": "Region_NA",
+      "type": "categorical"
+    },
+    {
+      "key": "division",
+      "title": "Division",
+      "type": "categorical"
+    }
+  ],
+  "geo_resolutions": [
+    "region",
+    "country",
+    "division"
+  ],
+  "display_defaults": {
+    "map_triplicate": true,
+    "color_by": "country"
+  },
+  "filters": [
+    "host",
+    "region",
+    "country",
+    "subtype",
+    "division",
+    "Domestic_Status",
+    "flyway",
+    "order"
+  ]
+}

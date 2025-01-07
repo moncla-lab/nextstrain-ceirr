@@ -1,0 +1,403 @@
+A/turkey/Indiana/22003707003/2022
+A/Backyard bird/Virginia/USDA004415001/2022
+A/chicken/Kentucky/USDA004416001/2022
+A/chicken/Kentucky/USDA004416002/2022
+A/chicken/Kentucky/USDA004416003/2022
+A/turkey/Kentucky/USDA004546001/2022
+A/turkey/Indiana/22004688002/2022
+A/turkey/Indiana/22004688003/2022
+A/turkey/Indiana/22004688006/2022
+A/Backyard bird/Maine/USDA005158001/2022
+A/chicken/Delaware/22005260001/2022
+A/turkey/Indiana/22005289001/2022
+A/turkey/Indiana/22005328001/2022
+A/Backyard bird/Michigan/USDA005440001/2022
+A/Backyard bird/Michigan/USDA005440002/2022
+A/Backyard bird/Maine/USDA005443001/2022
+A/Backyard bird/New York/USDA005647001/2022
+A/Backyard bird/New York/USDA005647002/2022
+A/turkey/Indiana/22005696001/2022
+A/turkey/Indiana/22005696002/2022
+A/turkey/Indiana/22005696003/2022
+A/Backyard bird/Iowa/USDA006114001/2022
+A/Backyard bird/Connecticut/USDA006118001/2022
+A/turkey/Indiana/22006259001/2022
+A/turkey/Indiana/22006261001/2022
+A/turkey/Indiana/22006261002/2022
+A/chicken/Missouri/USDA006569001/2022
+A/chicken/Maryland/22006578001/2022
+A/chicken/Maryland/22006578002/2022
+A/chicken/Missouri/22006639001/2022
+A/turkey/South Dakota/22006792001/2022
+A/turkey/South Dakota/22006792002/2022
+A/turkey/Iowa/22006795001/2022
+A/turkey/Iowa/22006795002/2022
+A/turkey/Missouri/USDA006944002/2022
+A/chicken/Delaware/USDA006945001/2022
+A/chicken/Delaware/USDA006945002/2022
+A/chicken/Maryland/USDA006948001/2022
+A/chicken/Maryland/USDA007086001/2022
+A/turkey/Missouri/USDA007087001/2022
+A/chicken/Maryland/USDA007273001/2022
+A/chicken/Maryland/USDA007273002/2022
+A/chicken/Iowa/USDA007376001/2022
+A/Guineafowl/Illinois/USDA007382001/2022
+A/Poultry/Kansas/USDA007391001/2022
+A/Backyard bird/Maine/USDA007410001/2022
+A/Backyard bird/Maine/USDA007410002/2022
+A/turkey/South Dakota/USDA007534001/2022
+A/chicken/Wisconsin/USDA007545001/2022
+A/Backyard bird/Maine/USDA007582001/2022
+A/Backyard bird/Missouri/USDA007677001/2022
+A/Backyard bird/Nebraska/USDA007805001/2022
+A/Backyard bird/Nebraska/USDA007805002/2022
+A/Backyard bird/New Hampshire/USDA007886001/2022
+A/chicken/Delaware/USDA008054003/2022
+A/Backyard bird/Maine/USDA008064001/2022
+A/Backyard bird/Maine/USDA008064002/2022
+A/Backyard bird/Kansas/USDA008114001/2022
+A/Backyard bird/Kansas/USDA008114002/2022
+A/chicken/Iowa/USDA008176003/2022
+A/turkey/South Dakota/USDA008239001/2022
+A/turkey/South Dakota/USDA008242001/2022
+A/chicken/Maryland/USDA008243001/2022
+A/Backyard bird/Kansas/USDA008259001/2022
+A/Backyard bird/Kansas/USDA008259002/2022
+A/Backyard bird/Maine/USDA008366001/2022
+A/Backyard bird/Maine/USDA008367001/2022
+A/Backyard bird/Maine/USDA008367002/2022
+A/Backyard bird/Iowa/USDA008373001/2022
+A/chicken/Nebraska/USDA008467001/2022
+A/turkey/South Dakota/USDA008479001/2022
+A/turkey/South Dakota/USDA008483001/2022
+A/turkey/South Dakota/USDA008485001/2022
+A/Backyard bird/Maine/USDA008540001/2022
+A/turkey/South Dakota/USDA008702001/2022
+A/turkey/South Dakota/USDA008704001/2022
+A/turkey/South Dakota/USDA008705001/2022
+A/turkey/Iowa/USDA008862002/2022
+A/turkey/South Dakota/USDA008866001/2022
+A/turkey/South Dakota/USDA008866002/2022
+A/Backyard bird/Michigan/USDA008890001/2022
+A/Backyard bird/Michigan/USDA008890004/2022
+A/Backyard bird/Michigan/USDA008890006/2022
+A/chicken/Nebraska/USDA009006001/2022
+A/turkey/South Dakota/USDA009023001/2022
+A/chicken/Iowa/USDA009180001/2022
+A/chicken/Iowa/USDA009180002/2022
+A/Backyard bird/Minnesota/USDA009181001/2022
+A/Backyard bird/Minnesota/USDA009181003/2022
+A/turkey/Minnesota/USDA009182001/2022
+A/turkey/Minnesota/USDA009182003/2022
+A/Backyard bird/Nebraska/USDA009190001/2022
+A/Backyard bird/Nebraska/USDA009190002/2022
+A/Backyard bird/Missouri/USDA009192002/2022
+A/Backyard bird/South Dakota/USDA009194002/2022
+A/turkey/Minnesota/USDA009195002/2022
+A/turkey/Minnesota/USDA009195003/2022
+A/turkey/South Dakota/USDA009196001/2022
+A/turkey/South Dakota/USDA009198001/2022
+A/turkey/Iowa/USDA009227001/2022
+A/turkey/Iowa/USDA009286001/2022
+A/turkey/Iowa/USDA009286002/2022
+A/chicken/Iowa/USDA009287001/2022
+A/turkey/Minnesota/USDA009313001/2022
+A/turkey/Minnesota/USDA009313002/2022
+A/turkey/Minnesota/USDA009314001/2022
+A/turkey/Minnesota/USDA009314002/2022
+A/Backyard bird/New York/USDA009324002/2022
+A/Backyard bird/New York/USDA009324009/2022
+A/Backyard bird/Wyoming/USDA009326002/2022
+A/turkey/South Dakota/USDA009327001/2022
+A/turkey/South Dakota/USDA009327002/2022
+A/turkey/South Dakota/USDA009329001/2022
+A/turkey/South Dakota/USDA009329002/2022
+A/turkey/South Dakota/USDA009330001/2022
+A/turkey/South Dakota/USDA009330002/2022
+A/turkey/North Carolina/USDA009332001/2022
+A/chicken/North Dakota/USDA009337001/2022
+A/Backyard bird/Massachusetts/USDA009371001/2022
+A/Backyard bird/Maine/USDA009412001/2022
+A/Backyard bird/Maine/USDA009412002/2022
+A/Backyard bird/Ohio/USDA009419001/2022
+A/turkey/South Dakota/USDA009534001/2022
+A/turkey/Iowa/USDA009550001/2022
+A/Backyard bird/North Carolina/USDA009583001/2022
+A/Backyard bird/Wyoming/USDA009599001/2022
+A/Backyard bird/Wyoming/USDA009599002/2022
+A/Backyard bird/Maine/USDA009605001/2022
+A/Backyard bird/Maine/USDA009605002/2022
+A/chicken/North Dakota/USDA009677001/2022
+A/turkey/South Dakota/USDA009688001/2022
+A/Backyard bird/Illinois/USDA009720001/2022
+A/Backyard bird/Illinois/USDA009720003/2022
+A/Backyard bird/Minnesota/USDA009735001/2022
+A/chicken/Iowa/22009819001original/2022
+A/turkey/Minnesota/USDA009820001/2022
+A/turkey/Iowa/USDA009825005/2022
+A/turkey/South Dakota/USDA009839001/2022
+A/turkey/North Dakota/22009840001original/2022
+A/turkey/South Dakota/USDA009841001/2022
+A/turkey/Missouri/USDA009845004/2022
+A/Backyard bird/Wyoming/USDA009849001/2022
+A/Backyard bird/Wisconsin/USDA009934002/2022
+A/turkey/North Dakota/USDA009978001/2022
+A/turkey/South Dakota/USDA009979001/2022
+A/turkey/South Dakota/22009980001original/2022
+A/turkey/North Carolina/22009981001original/2022
+A/turkey/North Carolina/22009981004original/2022
+A/turkey/North Carolina/22009982001original/2022
+A/turkey/North Carolina/22009982002original/2022
+A/turkey/North Carolina/22009983007original/2022
+A/turkey/North Carolina/22009983008original/2022
+A/pheasant/Texas/22009984001original/2022
+A/chicken/Iowa/22009985001original/2022
+A/turkey/Iowa/22009986001original/2022
+A/turkey/Iowa/22009986002original/2022
+A/turkey/Minnesota/22009996001original/2022
+A/turkey/Minnesota/22009997001original/2022
+A/turkey/Minnesota/22009998001original/2022
+A/turkey/Minnesota/22009999001original/2022
+A/turkey/Minnesota/22010000001original/2022
+A/pheasant/Texas/22010008001original/2022
+A/pheasant/Texas/22010008002original/2022
+A/turkey/South Dakota/22010013001original/2022
+A/turkey/South Dakota/22010013002original/2022
+A/turkey/North Dakota/22010015001original/2022
+A/turkey/Minnesota/22010085001original/2022
+A/turkey/Minnesota/22010085002original/2022
+A/turkey/Minnesota/22010092002original/2022
+A/turkey/Minnesota/22010092003original/2022
+A/turkey/Iowa/22010094001original/2022
+A/turkey/Minnesota/22010122001original/2022
+A/turkey/Minnesota/22010122002original/2022
+A/turkey/Minnesota/22010123001original/2022
+A/turkey/Minnesota/22010123004original/2022
+A/turkey/Minnesota/22010124001original/2022
+A/turkey/Minnesota/22010124002original/2022
+A/turkey/Minnesota/22010125001original/2022
+A/turkey/Minnesota/22010125002original/2022
+A/turkey/Minnesota/22010126001original/2022
+A/turkey/Minnesota/22010126002original/2022
+A/turkey/Minnesota/22010127001original/2022
+A/turkey/Iowa/22010132001original/2022
+A/turkey/Iowa/22010132002original/2022
+A/turkey/South Dakota/22010135001original/2022
+A/turkey/South Dakota/22010137001original/2022
+A/turkey/South Dakota/22010137002original/2022
+A/turkey/South Dakota/22010138001original/2022
+A/turkey/South Dakota/22010138002original/2022
+A/turkey/South Dakota/22010139001original/2022
+A/turkey/South Dakota/22010139002original/2022
+A/chicken/North Dakota/22010141001original/2022
+A/turkey/Missouri/22010142001original/2022
+A/turkey/North Carolina/22010144001original/2022
+A/turkey/North Carolina/22010145001original/2022
+A/turkey/North Carolina/22010146001original/2022
+A/turkey/North Carolina/22010146002original/2022
+A/chicken/Nebraska/22010155001original/2022
+A/chicken/Wyoming/22010157001original/2022
+A/chicken/Wyoming/22010157002original/2022
+A/guinea fowl/Maine/22010181001original/2022
+A/goose/Maine/22010181002original/2022
+A/chicken/New York/22010200002original/2022
+A/guinea fowl/New York/22010200003original/2022
+A/turkey/Missouri/22010296001original/2022
+A/chicken/North Carolina/22010298001original/2022
+A/chicken/North Carolina/22010298002original/2022
+A/chicken/North Carolina/22010299002original/2022
+A/turkey/Minnesota/22010312001original/2022
+A/chicken/New York/22010321001original/2022
+A/chicken/New York/22010321002original/2022
+A/domestic duck/New York/22010321003original/2022
+A/chicken/Wisconsin/22010325001original/2022
+A/turkey/Wisconsin/22010325003original/2022
+A/turkey/South Dakota/22010346001original/2022
+A/Black Vulture/Florida/USDA010358001/2022
+A/chicken/Wyoming/22010378001original/2022
+A/chicken/Montana/22010445001original/2022
+A/chicken/Montana/22010445003original/2022
+A/turkey/North Carolina/22010448001original/2022
+A/turkey/North Carolina/22010448003original/2022
+A/Cascade duck/Montana/22010454001original/2022
+A/Cascade duck/Montana/22010454003original/2022
+A/turkey/Minnesota/22010463002original/2022
+A/turkey/Minnesota/22010464001original/2022
+A/Duck/Indiana/USDA010611001/2022
+A/Duck/Indiana/USDA010624001/2022
+A/turkey/South Dakota/22010639001original/2022
+A/turkey/Minnesota/22010652001original/2022
+A/turkey/Minnesota/22010654001original/2022
+A/Backyard bird/North Dakota/USDA010657001/2022
+A/Backyard bird/North Dakota/USDA010657002/2022
+A/Backyard bird/Colorado/USDA010668001/2022
+A/turkey/South Dakota/22010765001original/2022
+A/turkey/Minnesota/22010770002original/2022
+A/turkey/Minnesota/22010771001original/2022
+A/turkey/Minnesota/22010772004original/2022
+A/turkey/Minnesota/22010773001original/2022
+A/Backyard bird/Michigan/USDA010845001/2022
+A/Backyard bird/Michigan/USDA010845003/2022
+A/Catalina macaw/Michigan/22010848002original/2022
+A/chicken/Nebraska/22010905001original/2022
+A/chicken/Montana/22010923004original/2022
+A/Backyard bird/Minnesota/USDA010928001/2022
+A/Backyard bird/Minnesota/USDA010928002/2022
+A/Backyard bird/Minnesota/USDA010928003/2022
+A/chicken/North Carolina/22010929001original/2022
+A/chicken/North Carolina/22010929002original/2022
+A/turkey/Wisconsin/22010935002original/2022
+A/Backyard bird/North Dakota/USDA010977001/2022
+A/turkey/Minnesota/22010991001original/2022
+A/turkey/Minnesota/22010992001original/2022
+A/chicken/Minnesota/22010993001original/2022
+A/chicken/Minnesota/22010993004original/2022
+A/chicken/Minnesota/22010994001original/2022
+A/turkey/Minnesota/22010995001original/2022
+A/turkey/Minnesota/22010995002original/2022
+A/pheasant/South Dakota/22011098001original/2022
+A/chicken/North Dakota/22011109001original/2022
+A/turkey/Kansas/22011119004original/2022
+A/Backyard bird/Michigan/USDA011121001/2022
+A/Backyard bird/Michigan/USDA011121002/2022
+A/turkey/Minnesota/22011140001original/2022
+A/turkey/Minnesota/22011141001original/2022
+A/turkey/Minnesota/22011141002original/2022
+A/turkey/Minnesota/22011142001original/2022
+A/Backyard bird/Wisconsin/USDA011213001/2022
+A/chicken/North Dakota/22011286001original/2022
+A/chicken/Wisconsin/22011334002original/2022
+A/chicken/Idaho/22011336001original/2022
+A/turkey/Minnesota/22011337001original/2022
+A/turkey/Minnesota/22011338001original/2022
+A/turkey/Minnesota/22011338002original/2022
+A/Duck/Indiana/USDA011343001/2022
+A/chicken/Idaho/22011347002original/2022
+A/chicken/Idaho/USDA011347004/2022
+A/chicken/Utah/22011468001original/2022
+A/chicken/Utah/22011468002original/2022
+A/turkey/Wisconsin/22011508001original/2022
+A/Backyard bird/Michigan/USDA011521001/2022
+A/Backyard bird/Michigan/USDA011521003/2022
+A/Backyard bird/Michigan/USDA011521004/2022
+A/Backyard bird/Michigan/USDA011521005/2022
+A/Backyard bird/Michigan/USDA011526001/2022
+A/Backyard bird/Michigan/USDA011526002/2022
+A/Backyard bird/Michigan/USDA011526003/2022
+A/chicken/Pennsylvania/22011531001original/2022
+A/chicken/Michigan/22011627001original/2022
+A/goose/Wyoming/USDA011671001/2022
+A/chicken/Pennsylvania/22011767001original/2022
+A/Backyard bird/Idaho/USDA011775001/2022
+A/Backyard bird/Idaho/USDA011775002/2022
+A/Backyard bird/North Dakota/USDA011778001/2022
+A/turkey/Minnesota/22011787001original/2022
+A/turkey/Minnesota/22011787002original/2022
+A/turkey/Minnesota/22011789001original/2022
+A/turkey/Minnesota/22011790002original/2022
+A/turkey/Minnesota/22011791003original/2022
+A/turkey/Minnesota/22011792001original/2022
+A/turkey/Minnesota/22011792002original/2022
+A/turkey/Minnesota/22011793001original/2022
+A/turkey/Minnesota/22011793002original/2022
+A/turkey/Minnesota/22011794001original/2022
+A/turkey/Minnesota/22011795001original/2022
+A/turkey/Minnesota/22011796001original/2022
+A/turkey/Minnesota/22011796002original/2022
+A/chicken/Colorado/22011826001original/2022
+A/chicken/Colorado/22011826002original/2022
+A/Backyard bird/Colorado/USDA011827001/2022
+A/Backyard bird/Colorado/USDA011827002/2022
+A/chicken/Pennsylvania/22011920001original/2022
+A/chicken/Pennsylvania/22011921002original/2022
+A/Duck/Indiana/USDA011946002/2022
+A/Duck/Indiana/USDA011946004/2022
+A/Redshouldered Hawk/Minnesota/USDA012000004/2022
+A/turkey/Minnesota/22012034001original/2022
+A/turkey/Minnesota/22012036001original/2022
+A/chicken/Montana/22012040001original/2022
+A/mallard/Montana/22012040005original/2022
+A/chicken/Idaho/22012045001original/2022
+A/chicken/Idaho/22012045002original/2022
+A/duck/Idaho/22012046001original/2022
+A/goose/Idaho/22012047001original/2022
+A/chicken/Pennsylvania/USDA012091001/2022
+A/chicken/Pennsylvania/USDA012092003/2022
+A/chicken/Pennsylvania/USDA012092005/2022
+A/turkey/Iowa/USDA012098001/2022
+A/turkey/North Dakota/USDA012099001/2022
+A/Backyard bird/North Dakota/USDA012100001/2022
+A/turkey/Minnesota/USDA012123001/2022
+A/turkey/Minnesota/USDA012125001/2022
+A/turkey/Minnesota/USDA012126002/2022
+A/turkey/Minnesota/USDA012126003/2022
+A/chicken/Pennsylvania/USDA012248001/2022
+A/turkey/Minnesota/USDA012285001/2022
+A/turkey/Minnesota/USDA012286001/2022
+A/turkey/Minnesota/USDA012287001/2022
+A/chicken/Colorado/USDA012308001/2022
+A/chicken/Colorado/USDA012308002/2022
+A/Black Vulture/Florida/USDA012331001/2022
+A/Black Vulture/Florida/USDA012333001/2022
+A/chicken/Minnesota/USDA012373001/2022
+A/goose/Minnesota/USDA012373002/2022
+A/turkey/Minnesota/USDA012374001/2022
+A/chicken/Utah/USDA012375001/2022
+A/Black Vulture/Maryland/USDA012407001/2022
+A/Backyard bird/Michigan/USDA012454001/2022
+A/Backyard bird/Michigan/USDA012454002/2022
+A/Backyard bird/Iowa/USDA012510002/2022
+A/chicken/North Dakota/USDA012538001/2022
+A/chicken/North Dakota/USDA012538002/2022
+A/chicken/Montana/USDA012540001/2022
+A/chicken/Pennsylvania/USDA012578004/2022
+A/Backyard bird/Kansas/USDA012741003/2022
+A/chicken/Pennsylvania/USDA012742001/2022
+A/chicken/Nebraska/USDA012756001/2022
+A/chicken/Michigan/USDA012855001/2022
+A/chicken/Michigan/USDA012855002/2022
+A/chicken/Michigan/USDA012855003/2022
+A/chicken/Michigan/USDA012855004/2022
+A/chicken/Michigan/USDA012855005/2022
+A/Cooper's hawk/Minnesota/22012931001original/2022
+A/chicken/Minnesota/USDA012932001/2022
+A/chicken/Indiana/USDA012933001/2022
+A/chicken/Minnesota/USDA012966001/2022
+A/turkey/Wisconsin/USDA012973001/2022
+A/turkey/Wisconsin/USDA012974001/2022
+A/chicken/Michigan/USDA012977001/2022
+A/Bald Eagle/Wyoming/USDA013015001/2022
+A/chicken/Montana/USDA013053001/2022
+A/chicken/Montana/USDA013053002/2022
+A/Duck/Montana/USDA013055005/2022
+A/Duck/Montana/USDA013055006/2022
+A/chicken/Montana/USDA013056002/2022
+A/chicken/Colorado/USDA013057001/2022
+A/Backyard bird/Wisconsin/USDA013061003/2022
+A/Backyard bird/Wisconsin/USDA013061004/2022
+A/Backyard bird/Wisconsin/USDA013061005/2022
+A/turkey/Minnesota/USDA013084001/2022
+A/Backyard bird/Nebraska/USDA013105001/2022
+A/Backyard bird/Alaska/USDA013107001/2022
+A/Backyard bird/Alaska/USDA013107002/2022
+A/Backyard bird/Wisconsin/USDA013183002/2022
+A/Backyard bird/Wisconsin/USDA013183003/2022
+A/Backyard bird/Wisconsin/USDA013183004/2022
+A/Backyard bird/Wisconsin/USDA013183005/2022
+A/Duck/Pennsylvania/USDA013189003/2022
+A/Duck/Pennsylvania/USDA013189004/2022
+A/chicken/Oklahoma/USDA013220001/2022
+A/Backyard bird/Minnesota/USDA013221002/2022
+A/Backyard bird/Minnesota/USDA013221003/2022
+A/Backyard bird/Minnesota/USDA013221004/2022
+A/Backyard bird/Minnesota/USDA013222001/2022
+A/Backyard bird/Minnesota/USDA013222004/2022
+A/Backyard bird/Minnesota/USDA013223001/2022
+A/Backyard bird/Minnesota/USDA013223003/2022
+A/chicken/Michigan/USDA013224001/2022
+A/chicken/Maryland/USDA006578001/2022
+A/chicken/Maryland/USDA006578002/2022
+A/Backyard bird/Missouri/USDA006639001/2022
+A/turkey/South Dakota/USDA006792001/2022
+A/turkey/South Dakota/USDA006792002/2022
+A/turkey/Iowa/USDA006795001/2022

@@ -16,8 +16,9 @@ rule unzip_h5nx:
 
 rule files:
     params:
-        input_metadata = "data/input/metadata.tsv",
-        reference = "data/config/reference_sequence_{segment}_A_goose_CR_2021.gb", #H3N8 from 1997
+        input_metadata = "data/h5nx/metadata-with-clade.tsv",
+        reference = "config/reference_sequence_{segment}_A_goose_CR_2021.gb", #H3N8 from 1997
+        vaccine_strains = "config/vaccine_strains.json"
 
 files = rules.files.params
 
@@ -38,10 +39,10 @@ rule filter:
     input:
         sequences = "data/h5nx/{segment}/sequences.fasta",
         metadata = files.input_metadata,
-        include = "data/config/include_strains.txt",
-        exclude = "data/config/exclude_strains.txt"
+        include = "config/include_strains.txt",
+        exclude = "config/exclude_strains.txt"
     output:
-        sequences = "results/filtered_{segment}.fasta"
+        sequences = "data/results/filtered_{segment}.fasta"
     params:
         group_by = "month host region", #month host location
         sequences_per_group = 25, #test changing from 25 to 2
@@ -74,7 +75,7 @@ rule align:
         sequences = rules.filter.output.sequences,
         reference = files.reference
     output:
-        alignment = "results/aligned_{segment}.fasta"
+        alignment = "data/results/aligned_{segment}.fasta"
     shell:
         """
         augur align \
@@ -91,7 +92,7 @@ rule tree:
     input:
         alignment = rules.align.output.alignment
     output:
-        tree = "results/tree-raw_{segment}.nwk"
+        tree = "data/results/tree-raw_{segment}.nwk"
     params:
         method = "iqtree"
     shell:
@@ -116,8 +117,8 @@ rule refine:
         alignment = rules.align.output,
         metadata = files.input_metadata
     output:
-        tree = "results/tree_{segment}.nwk",
-        node_data = "results/branch-lengths_{segment}.json"
+        tree = "data/results/tree_{segment}.nwk",
+        node_data = "data/results/branch-lengths_{segment}.json"
     params:
         coalescent = "const",
         date_inference = "marginal",
@@ -143,7 +144,7 @@ rule ancestral:
         tree = rules.refine.output.tree,
         alignment = rules.align.output
     output:
-        node_data = "results/nt-muts_{segment}.json"
+        node_data = "data/results/nt-muts_{segment}.json"
     params:
         inference = "joint"
     shell:
@@ -163,7 +164,7 @@ rule translate:
         node_data = rules.ancestral.output.node_data,
         reference = files.reference
     output:
-        node_data = "results/aa-muts_{segment}.json"
+        node_data = "data/results/aa-muts_{segment}.json"
     shell:
         """
         augur translate \
@@ -179,7 +180,7 @@ rule traits:
         tree = rules.refine.output.tree,
         metadata = files.input_metadata
     output:
-        node_data = "results/traits_{segment}.json",
+        node_data = "data/results/traits_{segment}.json",
     params:
         columns = "host region country division flyway Domestic_Status",
     shell:
@@ -197,15 +198,12 @@ rule export:
     input:
         tree = rules.refine.output.tree,
         metadata = files.input_metadata,
-        #node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data,files.phenotype_json],
-        #node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data,files.vaccine_json],
-        node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data],
-        auspice_config = "data/config/auspice_config.json",
-        colors = "data/config/colors.tsv",
-        description = "data/config/description.md"
-
+        node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data,files.vaccine_strains],
+        auspice_config = "config/auspice_config.json",
+        colors = "config/colors.tsv",
+        description = "config/description.md",
     output:
-        auspice_json = "auspice/h5nx_{segment}.json"
+        auspice_json = "data/auspice/h5nx_{segment}.json"
     shell:
         """
         augur export v2 \
