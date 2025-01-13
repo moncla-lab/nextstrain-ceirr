@@ -2,7 +2,7 @@ SEGMENTS = ["pb1","pb2","na","pa","ha","np","mp","ns"]
 
 rule all:
     input:
-        auspice_json = expand("auspice/h5nx_{segment}.json", segment=SEGMENTS)
+        auspice_json = expand("data/auspice/h5nx_{segment}.json", segment=SEGMENTS)
 
 rule unzip_h5nx:
     input:
