@@ -15,7 +15,7 @@ nextstrain build . -j $NUMBER_OF_JOBS all
 View:
 
 ```
-nextstrain view data/auspice
+nextstrain view data/ml
 ```
 
 
