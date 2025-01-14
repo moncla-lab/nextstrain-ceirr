@@ -1,2 +1,3 @@
 data
 .snakemake
+.DS_Store

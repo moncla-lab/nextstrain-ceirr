@@ -242,7 +242,6 @@ rule annotate:
             for row in phenotypes 
             if row != ''
         }
-        print(annotation_dict)
         has_annotation = set(annotation_dict.keys())
         newcol_to_pcclass = {
             'Receptor binding': 'invitro',
