@@ -20,7 +20,7 @@ rule unzip_h5nx:
 
 rule files:
     params:
-        input_metadata = "data/h5nx/metadata.tsv",
+        input_metadata = "data/h5nx/metadata-with-clade.tsv",
         reference = "config/reference_sequence_{segment}_A_goose_CR_2021.gb", #H3N8 from 1997
         vaccine_strains = "config/vaccine_strains.json"
 
