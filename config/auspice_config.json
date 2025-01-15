@@ -77,7 +77,7 @@
   ],
   "display_defaults": {
     "map_triplicate": true,
-    "color_by": "country"
+    "color_by": "phenotypic_characterization"
   },
   "filters": [
     "host",
