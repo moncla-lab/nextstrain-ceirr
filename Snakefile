@@ -8,17 +8,7 @@ SEGMENTS = ["pb1","pb2","na","pa","ha","np","mp","ns"]
 
 rule all:
     input:
-        auspice_json = expand("data/ml/h5nx_{segment}.json", segment=SEGMENTS)
-
-rule unzip_h5nx:
-    input:
-        "h5-data-updates/h5nx.zip"
-    output:
-        expand("data/h5nx/{segment}/sequences.fasta", segment=SEGMENTS)
-    shell:
-        """
-            unzip -o h5-data-updates/h5nx.zip -d data/
-        """
+        auspice_json = expand("data/ml/h5nx-{segment}-ceirr.json", segment=SEGMENTS)
 
 rule files:
     params:
@@ -27,6 +17,17 @@ rule files:
         vaccine_strains = "config/vaccine_strains.json"
 
 files = rules.files.params
+
+rule unzip_h5nx:
+    input:
+        "h5-data-updates/h5nx.zip"
+    output:
+        expand("data/h5nx/{segment}/sequences.fasta", segment=SEGMENTS),
+        files.input_metadata
+    shell:
+        """
+            unzip -o h5-data-updates/h5nx.zip -d data/
+        """
 
 def min_length(w):
     len_dict = {"pb2": 2100, "pb1": 2100, "pa": 2000, "ha":1600, "np":1400, "na":1270, "mp":900, "ns":800}
@@ -229,7 +230,7 @@ rule annotate:
         phenotypes = 'data/phenotypes.tsv',
         sources = 'data/sources.tsv'
     output:
-        "data/ml/h5nx_{segment}.json"
+        "data/ml/h5nx-{segment}-ceirr.json"
     run:
         phenotypic_characterization_annotation(
             input.auspice, input.phenotypes, input.sources, output[0]
