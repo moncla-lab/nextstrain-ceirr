@@ -3,6 +3,7 @@ import json
 
 from ceirr import SEGMENTS
 from ceirr import phenotypic_characterization_annotation
+from ceirr import genoflu_dataflow
 
 
 rule all:
@@ -36,6 +37,26 @@ rule extract_excel:
         sources_tsv = 'data/sources.tsv'
     run:
         split_phenotypes_excel(input[0], output.phenotypes_tsv, output.sources_tsv)
+
+rule genoflu_dataflow:
+    input:
+        expand("data/h5nx/{segment}/sequences.fasta", segment=SEGMENTS)
+    output:
+        expand("data/genoflu/{segment}.fasta", segment=SEGMENTS)
+    run:
+        genoflu_dataflow()
+
+rule genoflu:
+    input:
+        rules.genoflu_dataflow.output
+    output:
+        'data/genoflu/results/results.tsv'
+    shell:
+        '''
+            # this avoids a quirk of the GenoFlu package... avoids UnboundLocalError related to excel_stats
+            rm -rf data/genoflu/temp/
+            python GenoFLU-multi/bin/genoflu-multi.py -m -f data/genoflu
+        '''
 
 def min_length(w):
     len_dict = {"pb2": 2100, "pb1": 2100, "pa": 2000, "ha":1600, "np":1400, "na":1270, "mp":900, "ns":800}
@@ -235,7 +256,7 @@ rule export:
 rule annotate:
     input:
         auspice = rules.export.output.auspice_json,
-        phenotypes = rules.extract_excel.output.phenotypes_tsv
+        phenotypes = rules.extract_excel.output.phenotypes_tsv,
         sources = rules.extract_excel.output.sources_tsv
     output:
         "data/ml/h5nx-{segment}-ceirr.json"

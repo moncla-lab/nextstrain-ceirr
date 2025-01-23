@@ -1,6 +1,8 @@
 import json
 import csv
+import glob
 
+from Bio import SeqIO
 import pandas as pd
 
 
@@ -116,3 +118,25 @@ def phenotypic_characterization_annotation(
 
         with open(output_path, 'w') as json_file:
             json.dump(auspice, json_file, indent=2)
+
+
+def genoflu_dataflow():
+    seq_dicts = {}
+    all_headers = set()
+
+    for segment in SEGMENTS:
+        fasta_file = f'data/h5nx/{segment}/sequences.fasta'
+        seq_dict = {record.id: record for record in SeqIO.parse(fasta_file, "fasta")}
+        seq_dicts[segment] = seq_dict
+        if not all_headers:
+            all_headers = set(seq_dict.keys())
+        else:
+            all_headers.intersection_update(seq_dict.keys())
+
+    sorted_headers = sorted(all_headers)
+
+    for segment in SEGMENTS:
+        output_file = f"data/genoflu/{segment}.fasta"
+        with open(output_file, "w") as out_f:
+            for header in sorted_headers:
+                SeqIO.write(seq_dicts[segment][header], out_f, "fasta")
