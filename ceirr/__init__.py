@@ -1,6 +1,25 @@
 import json
 import csv
 
+import pandas as pd
+
+
+SEGMENTS = ["pb1","pb2","na","pa","ha","np","mp","ns"]
+
+
+def split_phenotypes_excel(
+    input_excel, phenotypes_output, sources_output
+):
+    pd.read_excel(input_excel).to_csv(
+        phenotypes_output, sep='\t', index=False
+    )
+    pd.read_excel(
+        input_excel, sheet_name='Sources'
+    ).to_csv(
+        sources_output, sep='\t', index=False
+    )
+
+
 
 def phenotypic_characterization_annotation(
     auspice_path, phenotypes_path, sources_path, output_path

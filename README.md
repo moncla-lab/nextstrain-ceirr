@@ -21,9 +21,11 @@ nextstrain view data/ml
 
 ## Installation
 
-[Install Nextstrain](https://docs.nextstrain.org/en/latest/install.html#installation-steps).
+[Install and configure Bioconda](https://bioconda.github.io/).
 
-Contact Stephen for access to private data.
+Install dependencies (TODO).
+
+Contact Stephen for access to private data. Place phenotypic spreadsheet at `data/Phenotypic characterizations.xlsx`.
 
 Pull down this repository and dependent repositories:
 

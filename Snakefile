@@ -1,10 +1,9 @@
 import csv
 import json
 
+from ceirr import SEGMENTS
 from ceirr import phenotypic_characterization_annotation
 
-
-SEGMENTS = ["pb1","pb2","na","pa","ha","np","mp","ns"]
 
 rule all:
     input:
@@ -28,6 +27,15 @@ rule unzip_h5nx:
         """
             unzip -o h5-data-updates/h5nx.zip -d data/
         """
+
+rule extract_excel:
+    input:
+        "data/Phenotypic characterizations.xlsx"
+    output:
+        phenotypes_tsv = 'data/phenotypes.tsv',
+        sources_tsv = 'data/sources.tsv'
+    run:
+        split_phenotypes_excel(input[0], output.phenotypes_tsv, output.sources_tsv)
 
 def min_length(w):
     len_dict = {"pb2": 2100, "pb1": 2100, "pa": 2000, "ha":1600, "np":1400, "na":1270, "mp":900, "ns":800}
@@ -227,8 +235,8 @@ rule export:
 rule annotate:
     input:
         auspice = rules.export.output.auspice_json,
-        phenotypes = 'data/phenotypes.tsv',
-        sources = 'data/sources.tsv'
+        phenotypes = rules.extract_excel.output.phenotypes_tsv
+        sources = rules.extract_excel.output.sources_tsv
     output:
         "data/ml/h5nx-{segment}-ceirr.json"
     run:
