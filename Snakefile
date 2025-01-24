@@ -3,6 +3,7 @@ import json
 
 from ceirr import SEGMENTS
 from ceirr import phenotypic_characterization_annotation
+from ceirr import split_phenotypes_excel
 from ceirr import genoflu_dataflow
 from ceirr import genoflu_postprocess
 from ceirr import merge_metadata

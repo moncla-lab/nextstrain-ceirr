@@ -23,7 +23,11 @@ nextstrain view data/ml
 
 [Install and configure Bioconda](https://bioconda.github.io/).
 
-Install dependencies (TODO).
+Install dependencies:
+
+```
+conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain
+```
 
 Contact Stephen for access to private data. Place phenotypic spreadsheet at `data/Phenotypic characterizations.xlsx`.
 
