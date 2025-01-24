@@ -140,3 +140,20 @@ def genoflu_dataflow():
         with open(output_file, "w") as out_f:
             for header in sorted_headers:
                 SeqIO.write(seq_dicts[segment][header], out_f, "fasta")
+
+
+def genoflu_postprocess(
+        input_tsv, output_tsv, number_of_genotypes=9
+    ):
+    df = pd.read_csv(input_tsv, sep='\t')
+    df['was_assigned'] = df.Genotype.apply(
+        lambda col: col[0:min(len('Not assigned:'), len(col))] != 'Not assigned:'
+    )
+    df.loc[~df.was_assigned, 'Genotype'] = 'Unassigned'
+    counts = df['Genotype'].value_counts()
+    print('Top Genoflu genotypes:', counts.to_string())
+    top = counts.head(number_of_genotypes).index
+    df["genoflu_buckets"] = df["Genotype"].where(
+        df["Genotype"].isin(top), "Not dominant genotype"
+    )
+    df.to_csv(output_tsv, index=False, sep='\t')

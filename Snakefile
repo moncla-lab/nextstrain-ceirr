@@ -4,6 +4,7 @@ import json
 from ceirr import SEGMENTS
 from ceirr import phenotypic_characterization_annotation
 from ceirr import genoflu_dataflow
+from ceirr import genoflu_postprocess
 
 
 rule all:
@@ -46,7 +47,7 @@ rule genoflu_dataflow:
     run:
         genoflu_dataflow()
 
-rule genoflu:
+rule genoflu_run:
     input:
         rules.genoflu_dataflow.output
     output:
@@ -57,6 +58,14 @@ rule genoflu:
             rm -rf data/genoflu/temp/
             python GenoFLU-multi/bin/genoflu-multi.py -m -f data/genoflu
         '''
+
+rule genoflu_postprocess:
+    input:
+        rules.genoflu_run.output[0]
+    output:
+        'data/genoflu/results/ml.tsv'
+    run:
+        genoflu_postprocess(input[0], output[0])
 
 def min_length(w):
     len_dict = {"pb2": 2100, "pb1": 2100, "pa": 2000, "ha":1600, "np":1400, "na":1270, "mp":900, "ns":800}
