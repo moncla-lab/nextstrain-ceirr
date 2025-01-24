@@ -157,3 +157,12 @@ def genoflu_postprocess(
         df["Genotype"].isin(top), "Not dominant genotype"
     )
     df.to_csv(output_tsv, index=False, sep='\t')
+
+
+def merge_metadata(input_metadata, input_genoflu, output_tsv):
+    metadata_df = pd.read_csv(input_metadata, sep='\t')
+    genoflu_df = pd.read_csv(input_genoflu, sep='\t')
+    merged_df = metadata_df.merge(
+        genoflu_df, left_on="strain", right_on="Strain", how="left"
+    )
+    merged_df.to_csv(output_tsv, index=False, sep='\t')

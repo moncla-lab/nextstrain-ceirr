@@ -68,6 +68,11 @@
       "key": "division",
       "title": "Division",
       "type": "categorical"
+    },
+    {
+      "key": "genoflu_buckets",
+      "title": "Genoflu annotation",
+      "type": "categorical"
     }
   ],
   "geo_resolutions": [

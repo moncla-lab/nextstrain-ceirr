@@ -5,6 +5,7 @@ from ceirr import SEGMENTS
 from ceirr import phenotypic_characterization_annotation
 from ceirr import genoflu_dataflow
 from ceirr import genoflu_postprocess
+from ceirr import merge_metadata
 
 
 rule all:
@@ -66,6 +67,15 @@ rule genoflu_postprocess:
         'data/genoflu/results/ml.tsv'
     run:
         genoflu_postprocess(input[0], output[0])
+
+rule merge_metadata:
+    input:
+        metadata=files.input_metadata,
+        genoflu=rules.genoflu_postprocess.output[0]
+    output:
+        'data/metadata.tsv'
+    run:
+        merge_metadata(input.metadata, input.genoflu, output[0])
 
 def min_length(w):
     len_dict = {"pb2": 2100, "pb1": 2100, "pa": 2000, "ha":1600, "np":1400, "na":1270, "mp":900, "ns":800}
@@ -242,7 +252,7 @@ rule export:
     message: "Exporting data files for for auspice"
     input:
         tree = rules.refine.output.tree,
-        metadata = files.input_metadata,
+        metadata = rules.merge_metadata.output[0],
         node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data,files.vaccine_strains],
         auspice_config = "config/auspice_config.json",
         colors = "config/colors.tsv",
