@@ -94,7 +94,7 @@ rule filter:
         """
     input:
         sequences = "data/h5nx/{segment}/sequences.fasta",
-        metadata = files.input_metadata,
+        metadata = rules.merge_metadata.output[0],
         include = "config/include_strains.txt",
         exclude = "config/exclude_strains.txt"
     output:
@@ -171,7 +171,7 @@ rule refine:
     input:
         tree = rules.tree.output.tree,
         alignment = rules.align.output,
-        metadata = files.input_metadata
+        metadata = rules.merge_metadata.output[0],
     output:
         tree = "data/results/tree_{segment}.nwk",
         node_data = "data/results/branch-lengths_{segment}.json"
@@ -234,7 +234,7 @@ rule traits:
     message: "Inferring ancestral traits for {params.columns!s}"
     input:
         tree = rules.refine.output.tree,
-        metadata = files.input_metadata
+        metadata = rules.merge_metadata.output[0],
     output:
         node_data = "data/results/traits_{segment}.json",
     params:
