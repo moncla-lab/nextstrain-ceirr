@@ -156,6 +156,7 @@ def genoflu_postprocess(
     df["genoflu_buckets"] = df["Genotype"].where(
         df["Genotype"].isin(top), "Not dominant genotype"
     )
+    df.rename(columns={"Genotype List Used, >=98%": "Genotype List Used >=98%"}, inplace=True)
     df.to_csv(output_tsv, index=False, sep='\t')
 
 
