@@ -1,7 +1,7 @@
 {
   "title": "CEIRR Risk Assessment Pipeline - Phenotypic Characterization",
   "maintainers": [
-    {"name": "Stephen Shank. Made possible by the CEIRR RAP Subgroup on Phenotypic Characterizations"}
+    {"name": "Stephen Shank. Made possible by the CEIRR RAP Subgroup on Phenotypic Characterizations. Special thanks to Jordan Ort for excellent work on GenoFlu."}
   ],
   "build_url": "",
   "data_provenance": [

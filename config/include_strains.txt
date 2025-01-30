@@ -236,7 +236,7 @@ A/Texas/37/2024
 A/skunk/NewMexico/24006483001/2024
 
 # These strains are strains used by CEIRR labs for phenotypic characterization and will be included as vaccine strains in vaccine_strains.json
-A/AmericanWigeon/SouthCarolina/22000345001/2021
+A/AmericanWigeon/SouthCarolina/USDA000345001/2021
 A/baldeagle/Florida/W22134OP/2022
 A/mink/Spain/22VIR127741338692/2022
 A/Chile/25945/2023

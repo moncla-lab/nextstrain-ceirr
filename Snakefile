@@ -9,6 +9,8 @@ from ceirr import genoflu_postprocess
 from ceirr import merge_metadata
 
 
+NUMBER_OF_GENOTYPES = 15
+
 rule all:
     input:
         auspice_json = expand("data/ml/h5nx-{segment}-ceirr.json", segment=SEGMENTS)
@@ -65,9 +67,10 @@ rule genoflu_postprocess:
     input:
         rules.genoflu_run.output[0]
     output:
-        'data/genoflu/results/ml.tsv'
+        genoflu='data/genoflu/results/ml.tsv',
+        counts='data/genoflu/results/counts.tsv'
     run:
-        genoflu_postprocess(input[0], output[0])
+        genoflu_postprocess(input[0], output.genoflu, output.counts, NUMBER_OF_GENOTYPES)
 
 rule merge_metadata:
     input:
@@ -238,7 +241,7 @@ rule traits:
     output:
         node_data = "data/results/traits_{segment}.json",
     params:
-        columns = "host region country division flyway Domestic_Status",
+        columns = "host region country division flyway Domestic_Status genoflu_buckets",
     shell:
         """
         augur traits \

@@ -143,7 +143,7 @@ def genoflu_dataflow():
 
 
 def genoflu_postprocess(
-        input_tsv, output_tsv, number_of_genotypes=9
+        input_tsv, genoflu_tsv, counts_tsv, number_of_genotypes=9
     ):
     df = pd.read_csv(input_tsv, sep='\t')
     df['was_assigned'] = df.Genotype.apply(
@@ -157,7 +157,8 @@ def genoflu_postprocess(
         df["Genotype"].isin(top), "Not dominant genotype"
     )
     df.rename(columns={"Genotype List Used, >=98%": "Genotype List Used >=98%"}, inplace=True)
-    df.to_csv(output_tsv, index=False, sep='\t')
+    counts.to_csv(counts_tsv, sep="\t", header=False)
+    df.to_csv(genoflu_tsv, index=False, sep='\t')
 
 
 def merge_metadata(input_metadata, input_genoflu, output_tsv):
