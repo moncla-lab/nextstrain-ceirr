@@ -10,6 +10,7 @@ from ceirr import merge_metadata
 
 
 NUMBER_OF_GENOTYPES = 15
+GENOTYPES_TO_INCLUDE = ['D1.1', 'D1.2']
 
 rule all:
     input:
@@ -103,7 +104,7 @@ rule filter:
     output:
         sequences = "data/results/filtered_{segment}.fasta"
     params:
-        group_by = "month host region", #month host location
+        group_by = "month host region genoflu_bin", #month host location
         sequences_per_group = 25, #test changing from 25 to 2
         min_date = 2021,
         min_length = min_length,  # instead of specifying one parameter value, we can use a function to specify minimum lengths that are unique to each segment
@@ -241,7 +242,7 @@ rule traits:
     output:
         node_data = "data/results/traits_{segment}.json",
     params:
-        columns = "host region country division flyway Domestic_Status genoflu_buckets",
+        columns = "host region country division flyway Domestic_Status genoflu_bins",
     shell:
         """
         augur traits \

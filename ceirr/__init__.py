@@ -143,7 +143,7 @@ def genoflu_dataflow():
 
 
 def genoflu_postprocess(
-        input_tsv, genoflu_tsv, counts_tsv, number_of_genotypes=9
+        input_tsv, genoflu_tsv, counts_tsv, number_of_genotypes=9, included_genotypes=[]
     ):
     df = pd.read_csv(input_tsv, sep='\t')
     df['was_assigned'] = df.Genotype.apply(
@@ -152,9 +152,11 @@ def genoflu_postprocess(
     df.loc[~df.was_assigned, 'Genotype'] = 'Unassigned'
     counts = df['Genotype'].value_counts()
     print('Top Genoflu genotypes:', counts.to_string())
-    top = counts.head(number_of_genotypes).index
-    df["genoflu_buckets"] = df["Genotype"].where(
-        df["Genotype"].isin(top), "Not dominant genotype"
+    number_to_bin = number_of_genotypes - len(included_genotypes)
+    top = counts.head(number_to_bin).index
+    desired_genotypes = list(top) + included_genotypes
+    df["genoflu_bin"] = df["Genotype"].where(
+        df["Genotype"].isin(desired_genotypes), "Not dominant genotype"
     )
     df.rename(columns={"Genotype List Used, >=98%": "Genotype List Used >=98%"}, inplace=True)
     counts.to_csv(counts_tsv, sep="\t", header=False)
