@@ -71,7 +71,7 @@ rule genoflu_postprocess:
         genoflu='data/genoflu/results/ml.tsv',
         counts='data/genoflu/results/counts.tsv'
     run:
-        genoflu_postprocess(input[0], output.genoflu, output.counts, NUMBER_OF_GENOTYPES)
+        genoflu_postprocess(input[0], output.genoflu, output.counts, NUMBER_OF_GENOTYPES, GENOTYPES_TO_INCLUDE)
 
 rule merge_metadata:
     input:
