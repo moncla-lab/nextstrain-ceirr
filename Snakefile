@@ -60,7 +60,7 @@ rule genoflu_run:
         '''
             # this avoids a quirk of the GenoFlu package... avoids UnboundLocalError related to excel_stats
             rm -rf data/genoflu/temp/
-            python GenoFLU-multi/bin/genoflu-multi.py -m -f data/genoflu
+            python GenoFLU-multi/bin/genoflu-multi.py -n 12 -f data/genoflu
         '''
 
 rule genoflu_postprocess:

@@ -401,3 +401,4 @@ A/Backyard bird/Missouri/USDA006639001/2022
 A/turkey/South Dakota/USDA006792001/2022
 A/turkey/South Dakota/USDA006792002/2022
 A/turkey/Iowa/USDA006795001/2022
+A/Fox/Bayern/WS113/2022
