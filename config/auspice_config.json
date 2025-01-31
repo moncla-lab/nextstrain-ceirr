@@ -70,7 +70,7 @@
       "type": "categorical"
     },
     {
-      "key": "genoflu_buckets",
+      "key": "genoflu_bin",
       "title": "Genoflu annotation",
       "type": "categorical"
     }
