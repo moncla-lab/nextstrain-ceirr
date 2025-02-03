@@ -177,6 +177,7 @@ def genoflu_postprocess(
     merged_df = metadata_df.merge(
         genoflu_df, left_on="strain", right_on="Strain", how="left"
     )
+    merged_df.rename(columns={"Genotype List Used, >=98%": "Genotype List Used >=98%"}, inplace=True)
     merged_df['Genotype'] = merged_df.apply(genoflu_refine_genotype, axis=1)
     counts = merged_df['Genotype'].value_counts()
     print('Top Genoflu genotypes:', counts.to_string())
@@ -195,6 +196,5 @@ def genoflu_postprocess(
     merged_df["genoflu_bin"] = merged_df["Genotype"].where(
         merged_df["Genotype"].isin(desired_genotypes), "Not dominant genotype"
     )
-    merged_df.rename(columns={"Genotype List Used, >=98%": "Genotype List Used >=98%"}, inplace=True)
     counts.to_csv(counts_tsv, sep="\t", header=False)
     merged_df.to_csv(output_metadata_tsv, index=False, sep='\t')
