@@ -141,6 +141,22 @@ def genoflu_dataflow():
                 SeqIO.write(seq_dicts[segment][header], out_f, "fasta")
 
 
+def parse_genoflu_genotypes_list(annotation):
+    result = {segment: None for segment in SEGMENTS}
+    if pd.isna(annotation):
+        return result
+    try:
+        for entry in annotation.split(', '):
+            genoflu_gene_key, value = entry.split(':')
+            ml_gene_key = genoflu_gene_key.strip().lower()
+            if ml_gene_key in result:
+                result[ml_gene_key] = value.strip()
+    except:
+        import pdb; pdb.set_trace()
+
+    return result
+
+
 def genoflu_postprocess(
         input_tsv, genoflu_tsv, counts_tsv, number_of_genotypes=9, included_genotypes=[]
     ):
@@ -152,6 +168,15 @@ def genoflu_postprocess(
     counts = df['Genotype'].value_counts()
     print('Top Genoflu genotypes:', counts.to_string())
     number_to_bin = number_of_genotypes - len(included_genotypes)
+    parsed_genotype_list = [
+        parse_genoflu_genotypes_list(row)
+        for row in df['Genotype List Used >=98%']
+    ]
+    for segment in SEGMENTS:
+        df[f'Genoflu {segment} variant'] = [
+            row[f'{segment}'] 
+            for row in parsed_genotype_list 
+        ]
     top = counts.head(number_to_bin).index
     desired_genotypes = list(top) + included_genotypes
     df["genoflu_bin"] = df["Genotype"].where(
