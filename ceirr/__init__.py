@@ -145,52 +145,56 @@ def parse_genoflu_genotypes_list(annotation):
     result = {segment: None for segment in SEGMENTS}
     if pd.isna(annotation):
         return result
-    try:
-        for entry in annotation.split(', '):
-            genoflu_gene_key, value = entry.split(':')
-            ml_gene_key = genoflu_gene_key.strip().lower()
-            if ml_gene_key in result:
-                result[ml_gene_key] = value.strip()
-    except:
-        import pdb; pdb.set_trace()
+    for entry in annotation.split(', '):
+        genoflu_gene_key, value = entry.split(':')
+        ml_gene_key = genoflu_gene_key.strip().lower()
+        if ml_gene_key in result:
+            result[ml_gene_key] = value.strip()
 
     return result
 
 
+def genoflu_refine_genotype(row):
+    if pd.isna(row['Genotype']):
+        was_assigned = False
+    else:
+        was_assigned = not 'Not assigned:' in row['Genotype']
+
+    if was_assigned:
+        return row['Genotype']
+    elif row['country'] == 'Usa':
+        return 'Unassigned-US'
+    else:
+        return 'Unassigned'
+
+
 def genoflu_postprocess(
-        input_tsv, genoflu_tsv, counts_tsv, number_of_genotypes=9, included_genotypes=[]
+        input_metadata_tsv, input_genoflu_tsv, output_metadata_tsv, counts_tsv,
+        number_of_genotypes=9, included_genotypes=[]
     ):
-    df = pd.read_csv(input_tsv, sep='\t')
-    df['was_assigned'] = df.Genotype.apply(
-        lambda col: col[0:min(len('Not assigned:'), len(col))] != 'Not assigned:'
+    metadata_df = pd.read_csv(input_metadata_tsv, sep='\t')
+    genoflu_df = pd.read_csv(input_genoflu_tsv, sep='\t')
+    merged_df = metadata_df.merge(
+        genoflu_df, left_on="strain", right_on="Strain", how="left"
     )
-    df.loc[~df.was_assigned, 'Genotype'] = 'Unassigned'
-    counts = df['Genotype'].value_counts()
+    merged_df['Genotype'] = merged_df.apply(genoflu_refine_genotype, axis=1)
+    counts = merged_df['Genotype'].value_counts()
     print('Top Genoflu genotypes:', counts.to_string())
     number_to_bin = number_of_genotypes - len(included_genotypes)
     parsed_genotype_list = [
         parse_genoflu_genotypes_list(row)
-        for row in df['Genotype List Used >=98%']
+        for row in merged_df['Genotype List Used >=98%']
     ]
     for segment in SEGMENTS:
-        df[f'Genoflu {segment} variant'] = [
+        merged_df[f'Genoflu {segment} variant'] = [
             row[f'{segment}'] 
             for row in parsed_genotype_list 
         ]
     top = counts.head(number_to_bin).index
     desired_genotypes = list(top) + included_genotypes
-    df["genoflu_bin"] = df["Genotype"].where(
-        df["Genotype"].isin(desired_genotypes), "Not dominant genotype"
+    merged_df["genoflu_bin"] = merged_df["Genotype"].where(
+        merged_df["Genotype"].isin(desired_genotypes), "Not dominant genotype"
     )
-    df.rename(columns={"Genotype List Used, >=98%": "Genotype List Used >=98%"}, inplace=True)
+    merged_df.rename(columns={"Genotype List Used, >=98%": "Genotype List Used >=98%"}, inplace=True)
     counts.to_csv(counts_tsv, sep="\t", header=False)
-    df.to_csv(genoflu_tsv, index=False, sep='\t')
-
-
-def merge_metadata(input_metadata, input_genoflu, output_tsv):
-    metadata_df = pd.read_csv(input_metadata, sep='\t')
-    genoflu_df = pd.read_csv(input_genoflu, sep='\t')
-    merged_df = metadata_df.merge(
-        genoflu_df, left_on="strain", right_on="Strain", how="left"
-    )
-    merged_df.to_csv(output_tsv, index=False, sep='\t')
+    merged_df.to_csv(output_metadata_tsv, index=False, sep='\t')

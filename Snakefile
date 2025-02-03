@@ -6,7 +6,6 @@ from ceirr import phenotypic_characterization_annotation
 from ceirr import split_phenotypes_excel
 from ceirr import genoflu_dataflow
 from ceirr import genoflu_postprocess
-from ceirr import merge_metadata
 
 
 NUMBER_OF_GENOTYPES = 15
@@ -66,21 +65,16 @@ rule genoflu_run:
 
 rule genoflu_postprocess:
     input:
-        rules.genoflu_run.output[0]
+        metadata=files.input_metadata,
+        genoflu=rules.genoflu_run.output[0]
     output:
-        genoflu='data/genoflu/results/ml.tsv',
+        metadata='data/metadata.tsv',
         counts='data/genoflu/results/counts.tsv'
     run:
-        genoflu_postprocess(input[0], output.genoflu, output.counts, NUMBER_OF_GENOTYPES, GENOTYPES_TO_INCLUDE)
-
-rule merge_metadata:
-    input:
-        metadata=files.input_metadata,
-        genoflu=rules.genoflu_postprocess.output[0]
-    output:
-        'data/metadata.tsv'
-    run:
-        merge_metadata(input.metadata, input.genoflu, output[0])
+        genoflu_postprocess(
+            input.metadata, input.genoflu, output.metadata, output.counts,
+            NUMBER_OF_GENOTYPES, GENOTYPES_TO_INCLUDE
+        )
 
 def min_length(w):
     len_dict = {"pb2": 2100, "pb1": 2100, "pa": 2000, "ha":1600, "np":1400, "na":1270, "mp":900, "ns":800}
@@ -98,7 +92,7 @@ rule filter:
         """
     input:
         sequences = "data/h5nx/{segment}/sequences.fasta",
-        metadata = rules.merge_metadata.output[0],
+        metadata = rules.genoflu_postprocess.output.metadata,
         include = "config/include_strains.txt",
         exclude = "config/exclude_strains.txt"
     output:
@@ -175,7 +169,7 @@ rule refine:
     input:
         tree = rules.tree.output.tree,
         alignment = rules.align.output,
-        metadata = rules.merge_metadata.output[0],
+        metadata = rules.genoflu_postprocess.output.metadata
     output:
         tree = "data/results/tree_{segment}.nwk",
         node_data = "data/results/branch-lengths_{segment}.json"
@@ -238,7 +232,7 @@ rule traits:
     message: "Inferring ancestral traits for {params.columns!s}"
     input:
         tree = rules.refine.output.tree,
-        metadata = rules.merge_metadata.output[0],
+        metadata = rules.genoflu_postprocess.output.metadata
     output:
         node_data = "data/results/traits_{segment}.json",
     params:
@@ -257,7 +251,7 @@ rule export:
     message: "Exporting data files for for auspice"
     input:
         tree = rules.refine.output.tree,
-        metadata = rules.merge_metadata.output[0],
+        metadata = rules.genoflu_postprocess.output.metadata,
         node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data,files.vaccine_strains],
         auspice_config = "config/auspice_config.json",
         colors = "config/colors.tsv",
