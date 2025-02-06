@@ -187,7 +187,7 @@ def genoflu_postprocess(
         for row in merged_df['Genotype List Used >=98%']
     ]
     for segment in SEGMENTS:
-        merged_df[f'Genoflu {segment} variant'] = [
+        merged_df[f'genoflu_{segment}_lineage'] = [
             row[f'{segment}'] 
             for row in parsed_genotype_list 
         ]

@@ -236,7 +236,7 @@ rule traits:
     output:
         node_data = "data/results/traits_{segment}.json",
     params:
-        columns = "host region country division flyway Domestic_Status genoflu_bins",
+        columns = lambda wc: f"host region country division flyway Domestic_Status genoflu_bin Genotype genoflu_{wc.segment}_lineage",
     shell:
         """
         augur traits \

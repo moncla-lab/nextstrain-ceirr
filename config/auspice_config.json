@@ -11,16 +11,6 @@
   ],
   "colorings": [
     {
-      "key": "gt",
-      "title": "Genotype",
-      "type": "categorical"
-    },
-    {
-      "key": "num_date",
-      "title": "Date",
-      "type": "continuous"
-    },
-    {
       "key": "country",
       "title": "Country",
       "type": "categorical"
@@ -38,11 +28,6 @@
       {
       "key": "h5_label_clade",
       "title": "Clade",
-      "type": "categorical"
-    },
-    {
-      "key": "Domestic_Status",
-      "title": "Domestic Status",
       "type": "categorical"
     },
           {
@@ -71,7 +56,52 @@
     },
     {
       "key": "genoflu_bin",
-      "title": "Genoflu annotation",
+      "title": "Genoflu annotation (major)",
+      "type": "categorical"
+    },
+    {
+      "key": "Genotype",
+      "title": "Genoflu annotation (all)",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_ha_lineage",
+      "title": "Genoflu HA lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_na_lineage",
+      "title": "Genoflu NA lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_pb1_lineage",
+      "title": "Genoflu PB1 lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_pb2_lineage",
+      "title": "Genoflu PB2 lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_pa_lineage",
+      "title": "Genoflu PA lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_np_lineage",
+      "title": "Genoflu NP lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_ns_lineage",
+      "title": "Genoflu NS lineage",
+      "type": "categorical"
+    },
+    {
+      "key": "genoflu_mp_lineage",
+      "title": "Genoflu MP lineage",
       "type": "categorical"
     }
   ],
