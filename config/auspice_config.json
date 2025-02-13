@@ -30,23 +30,9 @@
       "title": "Clade",
       "type": "categorical"
     },
-          {
-      "key": "flyway",
-      "title": "Flyway",
-      "type": "categorical"
-    },          {
+    {
       "key": "order",
       "title": "Order",
-      "type": "categorical"
-    },
-              {
-      "key": "species_group",
-      "title": "Species- Grouped",
-      "type": "categorical"
-    },
-          {
-      "key": "geo_region_na",
-      "title": "Region_NA",
       "type": "categorical"
     },
     {
@@ -62,46 +48,6 @@
     {
       "key": "Genotype",
       "title": "Genoflu annotation (all)",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_ha_lineage",
-      "title": "Genoflu HA lineage",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_na_lineage",
-      "title": "Genoflu NA lineage",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_pb1_lineage",
-      "title": "Genoflu PB1 lineage",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_pb2_lineage",
-      "title": "Genoflu PB2 lineage",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_pa_lineage",
-      "title": "Genoflu PA lineage",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_np_lineage",
-      "title": "Genoflu NP lineage",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_ns_lineage",
-      "title": "Genoflu NS lineage",
-      "type": "categorical"
-    },
-    {
-      "key": "genoflu_mp_lineage",
-      "title": "Genoflu MP lineage",
       "type": "categorical"
     }
   ],

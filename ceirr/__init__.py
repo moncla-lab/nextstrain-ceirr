@@ -94,26 +94,26 @@ def phenotypic_characterization_annotation(
                 traverse(child)
         traverse(auspice['tree'])
 
-        auspice['meta']['colorings'].append({
+        auspice['meta']['colorings'] = [{
             'key': 'phenotypic_characterization',
             'title': 'Phenotypic characterization',
             'type': 'categorical'
-        })
-        auspice['meta']['colorings'].append({
+        },
+        {
             'key': 'invivo_characterization',
             'title': 'In vivo phenotypic characterization',
             'type': 'categorical'
-        })
-        auspice['meta']['colorings'].append({
+        },
+        {
             'key': 'invitro_characterization',
             'title': 'In vitro phenotypic characterization',
             'type': 'categorical'
-        })
-        auspice['meta']['colorings'].append({
+        },
+        {
             'key': 'antiviral_characterization',
             'title': 'Antiviral phenotypic characterization',
             'type': 'categorical'
-        })
+        }] + auspice['meta']['colorings']
 
         with open(output_path, 'w') as json_file:
             json.dump(auspice, json_file, indent=2)

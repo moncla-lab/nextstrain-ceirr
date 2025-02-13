@@ -7,6 +7,8 @@ from ceirr import split_phenotypes_excel
 from ceirr import genoflu_dataflow
 from ceirr import genoflu_postprocess
 
+wildcard_constraints:
+  segment="[^/]+"
 
 NUMBER_OF_GENOTYPES = 15
 GENOTYPES_TO_INCLUDE = ['D1.1', 'D1.2']
@@ -99,7 +101,7 @@ rule filter:
         sequences = "data/results/filtered_{segment}.fasta"
     params:
         group_by = "month host region genoflu_bin", #month host location
-        sequences_per_group = 25, #test changing from 25 to 2
+        sequences_per_group = 15,
         min_date = 2021,
         min_length = min_length,  # instead of specifying one parameter value, we can use a function to specify minimum lengths that are unique to each segment
         exclude_where = "host=laboratoryderived host=ferret host=unknown host=other host=host country=? region=?"
@@ -247,13 +249,31 @@ rule traits:
             --confidence
         """
 
+rule configs:
+    input:
+        "config/auspice_config.json"
+    output:
+        "config/auspice_{segment}_config.json"
+    params:
+        lambda wildcards: f'GenoFlu {wildcards.segment.upper()} lineage'
+    shell:
+        '''
+            jq '.colorings += [
+                {{
+                    "key": "genoflu_{wildcards.segment}_lineage",
+                    "title": "{params}",
+                    "type": "categorical"
+                }}
+            ]' {input} > {output}
+        '''
+
 rule export:
     message: "Exporting data files for for auspice"
     input:
         tree = rules.refine.output.tree,
         metadata = rules.genoflu_postprocess.output.metadata,
         node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data,files.vaccine_strains],
-        auspice_config = "config/auspice_config.json",
+        auspice_config = rules.configs.output[0],
         colors = "config/colors.tsv",
         description = "config/description.md",
     output:
