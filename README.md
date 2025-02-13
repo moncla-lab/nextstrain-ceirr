@@ -26,7 +26,7 @@ nextstrain view data/ml
 Install dependencies:
 
 ```
-conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain
+conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain jq
 ```
 
 Contact Stephen for access to private data. Place phenotypic spreadsheet at `data/Phenotypic characterizations.xlsx`.
