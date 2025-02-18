@@ -15,7 +15,7 @@ GENOTYPES_TO_INCLUDE = ['D1.1', 'D1.2']
 
 rule all:
     input:
-        auspice_json = expand("data/ml/h5nx-{segment}-ceirr.json", segment=SEGMENTS)
+        auspice_json = expand("data/ml/h5nx_{segment}.json", segment=SEGMENTS)
 
 rule files:
     params:
