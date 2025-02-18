@@ -253,7 +253,7 @@ rule configs:
     input:
         "config/auspice_config.json"
     output:
-        "config/auspice_{segment}_config.json"
+        "data/config/auspice_{segment}_config.json"
     params:
         lambda wildcards: f'GenoFlu {wildcards.segment.upper()} lineage'
     shell:
@@ -268,7 +268,7 @@ rule configs:
         '''
 
 rule export:
-    message: "Exporting data files for for auspice"
+    message: "Exporting data files for auspice"
     input:
         tree = rules.refine.output.tree,
         metadata = rules.genoflu_postprocess.output.metadata,
@@ -297,7 +297,7 @@ rule annotate:
         phenotypes = rules.extract_excel.output.phenotypes_tsv,
         sources = rules.extract_excel.output.sources_tsv
     output:
-        "data/ml/h5nx-{segment}-ceirr.json"
+        "data/ml/h5nx_{segment}.json"
     run:
         phenotypic_characterization_annotation(
             input.auspice, input.phenotypes, input.sources, output[0]

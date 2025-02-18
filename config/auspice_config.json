@@ -1,7 +1,8 @@
 {
   "title": "CEIRR Risk Assessment Pipeline - Phenotypic Characterization",
   "maintainers": [
-    {"name": "Stephen Shank. Made possible by the CEIRR RAP Subgroup on Phenotypic Characterizations. Special thanks to Jordan Ort for excellent work on GenoFlu."}
+    {"name": "Stephen Shank"},
+    {"name": "the Moncla lab", "url": "https://lmoncla.github.io/monclalab/"}
   ],
   "build_url": "",
   "data_provenance": [
