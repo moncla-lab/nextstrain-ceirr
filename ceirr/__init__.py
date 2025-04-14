@@ -155,6 +155,8 @@ def parse_genoflu_genotypes_list(annotation):
 
 
 def genoflu_refine_genotype(row):
+    if row['region'] != 'North America':
+        return None
     if pd.isna(row['Genotype']):
         was_assigned = False
     else:
