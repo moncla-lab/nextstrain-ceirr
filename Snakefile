@@ -38,7 +38,7 @@ rule unzip_h5nx:
 
 rule extract_excel:
     input:
-        "data/Phenotypic characterizations.xlsx"
+        "data/Phenotypic Characterizations.xlsx"
     output:
         phenotypes_tsv = 'data/phenotypes.tsv',
         sources_tsv = 'data/sources.tsv'
