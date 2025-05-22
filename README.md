@@ -36,3 +36,6 @@ Pull down this repository and dependent repositories:
 ```
 git clone --recurse-submodules https://github.com/moncla-lab/nextstrain-ceirr
 ```
+
+### Moncla lab instructions 
+If you are a member of the Moncla lab, you should have access to the `h5-data-updates` repo and the phenotypes spreadsheet. If so, do the following: 
