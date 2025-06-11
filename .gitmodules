@@ -1,6 +1,9 @@
 [submodule "h5-data-updates"]
 	path = h5-data-updates
-	url = git@github.com:moncla-lab/h5-data-updates
+	url = ../h5-data-updates
 [submodule "GenoFLU-multi"]
 	path = GenoFLU-multi
 	url = http://github.com/moncla-lab/GenoFLU-multi
+[submodule "nextstrain_hpai_north_america"]
+	path = nextstrain_hpai_north_america
+	url = ../nextstrain-hpai-north-america
