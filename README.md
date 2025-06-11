@@ -9,13 +9,13 @@ Usage instructions assume you've successfully followed the installation instruct
 Run:
 
 ```
-nextstrain build . -j $NUMBER_OF_JOBS all
+snakemake -j $NUMBER_OF_JOBS all
 ```
 
 View:
 
 ```
-nextstrain view data/ml
+auspice view --datasetDir data/ml
 ```
 
 
@@ -29,13 +29,28 @@ Install dependencies:
 conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain jq
 ```
 
-Contact Stephen for access to private data. Place phenotypic spreadsheet at `data/Phenotypic characterizations.xlsx`.
+Obtain link phenotypes spreadsheet through the link in the CEIRR hosted build. Place at `data/Phenotypic characterizations.xlsx`.
+
+### Downloading the metadata
+
+When viewing the URL, from the main menu do **File > Create a Copy > Download a Copy**.
 
 Pull down this repository and dependent repositories:
 
 ```
-git clone --recurse-submodules https://github.com/moncla-lab/nextstrain-ceirr
+git clone https://github.com/moncla-lab/nextstrain-ceirr
+cd nextstrain-ceirr
+git submodule update --init
 ```
 
-### Moncla lab instructions 
-If you are a member of the Moncla lab, you should have access to the `h5-data-updates` repo and the phenotypes spreadsheet. If so, do the following: 
+## Submodule Management
+
+### Updating submodules when data changes:
+```bash
+git submodule update --remote    # then add, commit, and push like usual
+```
+
+### Submodule overview for maintainers:
+- **h5-data-updates**: Contains shared Genoflu analysis functions. Changes here affect both CEIRR and North America pipelines.
+- **GenoFLU-multi**: External tool for influenza genotyping. Update only when new versions are released.
+- **nextstrain_hpai_north_america**: Contains logic for preprocessing, running, and processing GenoFlu.
