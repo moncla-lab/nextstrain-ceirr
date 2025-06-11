@@ -3,6 +3,7 @@ import json
 
 from ceirr import SEGMENTS
 from ceirr import phenotypic_characterization_annotation, split_phenotypes_excel
+from ceirr import create_segment_config
 from nextstrain_hpai_north_america.na_hpai import genoflu_dataflow, genoflu_postprocess
 
 wildcard_constraints:
@@ -249,21 +250,17 @@ rule traits:
 
 rule configs:
     input:
-        "config/auspice_config.json"
+        config="config/auspice_config.json",
+        url_file="h5-data-updates/ceirr_url.txt"
     output:
         "data/config/auspice_{segment}_config.json"
-    params:
-        lambda wildcards: f'GenoFlu {wildcards.segment.upper()} lineage'
-    shell:
-        '''
-            jq '.colorings += [
-                {{
-                    "key": "genoflu_{wildcards.segment}_lineage",
-                    "title": "{params}",
-                    "type": "categorical"
-                }}
-            ]' {input} > {output}
-        '''
+    run:
+        create_segment_config(
+            input.config,
+            input.url_file,
+            output[0],
+            wildcards.segment
+        )
 
 rule export:
     message: "Exporting data files for auspice"

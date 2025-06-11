@@ -15,7 +15,7 @@ snakemake -j $NUMBER_OF_JOBS all
 View:
 
 ```
-auspice view --datasetDir data/ml
+nextstrain view data/ml
 ```
 
 
@@ -26,7 +26,7 @@ auspice view --datasetDir data/ml
 Install dependencies:
 
 ```
-conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain jq
+conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain
 ```
 
 Obtain link phenotypes spreadsheet through the link in the CEIRR hosted build. Place at `data/Phenotypic characterizations.xlsx`.

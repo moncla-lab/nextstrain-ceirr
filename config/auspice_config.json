@@ -1,8 +1,16 @@
 {
   "title": "CEIRR Risk Assessment Pipeline - Phenotypic Characterization",
   "maintainers": [
-    {"name": "Stephen Shank"},
-    {"name": "the Moncla lab", "url": "https://lmoncla.github.io/monclalab/"}
+    {
+      "name": "Stephen Shank"
+    },
+    {
+      "name": "the Moncla lab",
+      "url": "https://lmoncla.github.io/monclalab/"
+    },
+    {
+      "name": "the CEIRR RAP Phenotypic Charactierization Subgroup"
+    }
   ],
   "build_url": "",
   "data_provenance": [
@@ -26,7 +34,7 @@
       "title": "Host",
       "type": "categorical"
     },
-      {
+    {
       "key": "h5_label_clade",
       "title": "Clade",
       "type": "categorical"
