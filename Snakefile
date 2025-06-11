@@ -2,10 +2,8 @@ import csv
 import json
 
 from ceirr import SEGMENTS
-from ceirr import phenotypic_characterization_annotation
-from ceirr import split_phenotypes_excel
-from ceirr import genoflu_dataflow
-from ceirr import genoflu_postprocess
+from ceirr import phenotypic_characterization_annotation, split_phenotypes_excel
+from nextstrain_hpai_north_america.na_hpai import genoflu_dataflow, genoflu_postprocess
 
 wildcard_constraints:
   segment="[^/]+"
@@ -38,7 +36,7 @@ rule unzip_h5nx:
 
 rule extract_excel:
     input:
-        "data/Phenotypic Characterizations.xlsx"
+        "data/Phenotypic characterizations.xlsx"
     output:
         phenotypes_tsv = 'data/phenotypes.tsv',
         sources_tsv = 'data/sources.tsv'
