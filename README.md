@@ -6,6 +6,12 @@ Nextstrain pipelines for [CEIRR](https://www.ceirr-network.org/).
 
 Usage instructions assume you've successfully followed the installation instructions and have a basic understanding of [Nextstrain](https://nextstrain.org/).
 
+### Downloading the metadata
+
+Obtain a link to the phenotypes spreadsheet through the URL in the CEIRR hosted build. Place at `data/Phenotypic characterizations.xlsx`.
+
+To download a copy of the spreadsheet, from the main menu in Excel do: **File > Create a Copy > Download a Copy**.
+
 Run:
 
 ```
@@ -28,12 +34,6 @@ Install dependencies:
 ```
 conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain
 ```
-
-Obtain link phenotypes spreadsheet through the link in the CEIRR hosted build. Place at `data/Phenotypic characterizations.xlsx`.
-
-### Downloading the metadata
-
-When viewing the URL, from the main menu do **File > Create a Copy > Download a Copy**.
 
 Pull down this repository and dependent repositories:
 
