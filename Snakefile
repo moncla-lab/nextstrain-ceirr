@@ -103,7 +103,7 @@ rule filter:
         sequences_per_group = 15,
         min_date = 2021,
         min_length = min_length,  # instead of specifying one parameter value, we can use a function to specify minimum lengths that are unique to each segment
-        exclude_where = "host=laboratoryderived host=ferret host=unknown host=other host=host country=? region=?"
+        exclude_where = "host=laboratoryderived host=ferret host=unknown host=other host=host country=? region=? h5_label_clade=Am-nonGsGD h5_label_clade=EA-nonGsGD"
     shell:
         """
         augur filter \

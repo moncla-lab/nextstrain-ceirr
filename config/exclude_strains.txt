@@ -402,3 +402,5 @@ A/turkey/South Dakota/USDA006792001/2022
 A/turkey/South Dakota/USDA006792002/2022
 A/turkey/Iowa/USDA006795001/2022
 A/Fox/Bayern/WS113/2022
+A/duck/Bangladesh/59013/2023
+A/duck/Bangladesh/59131/2023
