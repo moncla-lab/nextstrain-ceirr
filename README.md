@@ -54,3 +54,7 @@ git submodule update --remote    # then add, commit, and push like usual
 - **h5-data-updates**: Contains shared Genoflu analysis functions. Changes here affect both CEIRR and North America pipelines.
 - **GenoFLU-multi**: External tool for influenza genotyping. Update only when new versions are released.
 - **nextstrain_hpai_north_america**: Contains logic for preprocessing, running, and processing GenoFlu.
+
+## Uploading data
+
+Visit the [CEIRR web application](https://app.ceirr-network.org/) and navigate to the the Nextstrain tab. Privileged users will see options to upload new datasets and new narratives at the bottom of the Auspice page.
