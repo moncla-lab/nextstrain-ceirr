@@ -126,10 +126,14 @@ def phenotypic_characterization_annotation(
 
 
 def create_segment_config(
-    input_config_path, url_file_path, output_config_path, segment
+    input_config_path, url_file_path, output_config_path, segment, ceirr_url_order
 ):
     """
-    Create segment-specific auspice config with CEIRR URL and GenoFlu coloring.
+    Create segment-specific auspice config with CEIRR URL and GenoFlu coloring. Takes as input 
+    input config path, output config path, and information on the ceirr url. This includes 
+    the url location of the fillable ceirr spreadsheet (url_file_path), and the ordering of
+    the url in the auspice config. The ceirr_url_order should be set to to a 0-indexed integer
+    that relates which maintainer link ceirr_url_order should reference
     """
     # Read the base config
     with open(input_config_path) as f:
@@ -140,7 +144,7 @@ def create_segment_config(
         with open(url_file_path) as f:
             ceirr_url = f.read().strip()
         if len(config.get("maintainers", [])) > 2:
-            config["maintainers"][2]["url"] = ceirr_url
+            config["maintainers"][ceirr_url_order]["url"] = ceirr_url
     except FileNotFoundError:
         # If URL file doesn't exist, continue without adding URL
         pass

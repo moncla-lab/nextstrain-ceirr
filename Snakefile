@@ -251,13 +251,15 @@ rule traits:
 rule configs:
     input:
         config="config/auspice_config.json",
-        url_file="h5-data-updates/ceirr_url.txt"
+        url_file="h5-data-updates/ceirr_url.txt",
+        ceirr_url_order = 3
     output:
         "data/config/auspice_{segment}_config.json"
     run:
         create_segment_config(
             input.config,
             input.url_file,
+            input.ceirr_url_order,
             output[0],
             wildcards.segment
         )
