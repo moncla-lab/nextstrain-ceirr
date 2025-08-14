@@ -259,7 +259,8 @@ rule configs:
             input.config,
             input.url_file,
             output[0],
-            wildcards.segment
+            wildcards.segment,
+            3 # CEIRR URL order
         )
 
 rule export:
