@@ -1,16 +1,15 @@
 import csv
 import json
 
+import pandas as pd
+
 from ceirr import SEGMENTS
 from ceirr import phenotypic_characterization_annotation, split_phenotypes_excel
 from ceirr import create_segment_config
-from nextstrain_hpai_north_america.na_hpai import genoflu_dataflow, genoflu_postprocess
+from nextstrain_hpai_north_america.na_hpai import genoflu_postprocess, generate_genotype_colors
 
 wildcard_constraints:
   segment="[^/]+"
-
-NUMBER_OF_GENOTYPES = 15
-GENOTYPES_TO_INCLUDE = ['D1.1', 'D1.2']
 
 rule all:
     input:
@@ -44,38 +43,17 @@ rule extract_excel:
     run:
         split_phenotypes_excel(input[0], output.phenotypes_tsv, output.sources_tsv)
 
-rule genoflu_dataflow:
+rule genoflu:
     input:
-        expand("data/h5nx/{segment}/sequences.fasta", segment=SEGMENTS)
-    output:
-        expand("data/genoflu/{segment}.fasta", segment=SEGMENTS)
-    run:
-        genoflu_dataflow()
-
-rule genoflu_run:
-    input:
-        rules.genoflu_dataflow.output
-    output:
-        'data/genoflu/results/results.tsv'
-    shell:
-        '''
-            # this avoids a quirk of the GenoFlu package... avoids UnboundLocalError related to excel_stats
-            rm -rf data/genoflu/temp/
-            python GenoFLU-multi/bin/genoflu-multi.py -n 12 -f data/genoflu
-        '''
-
-rule genoflu_postprocess:
-    input:
-        metadata=files.input_metadata,
-        genoflu=rules.genoflu_run.output[0]
+        files.input_metadata
     output:
         metadata='data/metadata.tsv',
-        counts='data/genoflu/results/counts.tsv'
+        colors='config/colors.tsv'
     run:
-        genoflu_postprocess(
-            input.metadata, input.genoflu, output.metadata, output.counts,
-            NUMBER_OF_GENOTYPES, GENOTYPES_TO_INCLUDE
-        )
+        metadata = pd.read_csv(input[0], sep='\t')
+        genoflu_postprocess(metadata).to_csv(output.metadata, sep='\t')
+        generate_genotype_colors(output.metadata, output.colors)
+
 
 def min_length(w):
     len_dict = {"pb2": 2100, "pb1": 2100, "pa": 2000, "ha":1600, "np":1400, "na":1270, "mp":900, "ns":800}
@@ -93,13 +71,13 @@ rule filter:
         """
     input:
         sequences = "data/h5nx/{segment}/sequences.fasta",
-        metadata = rules.genoflu_postprocess.output.metadata,
+        metadata = rules.genoflu.output.metadata,
         include = "config/include_strains.txt",
         exclude = "config/exclude_strains.txt"
     output:
         sequences = "data/results/filtered_{segment}.fasta"
     params:
-        group_by = "month host region genoflu_bin", #month host location
+        group_by = "month host region genotype_ml", #month host location
         sequences_per_group = 15,
         min_date = 2021,
         min_length = min_length,  # instead of specifying one parameter value, we can use a function to specify minimum lengths that are unique to each segment
@@ -170,7 +148,7 @@ rule refine:
     input:
         tree = rules.tree.output.tree,
         alignment = rules.align.output,
-        metadata = rules.genoflu_postprocess.output.metadata
+        metadata = rules.genoflu.output.metadata
     output:
         tree = "data/results/tree_{segment}.nwk",
         node_data = "data/results/branch-lengths_{segment}.json"
@@ -233,7 +211,7 @@ rule traits:
     message: "Inferring ancestral traits for {params.columns!s}"
     input:
         tree = rules.refine.output.tree,
-        metadata = rules.genoflu_postprocess.output.metadata
+        metadata = rules.genoflu.output.metadata
     output:
         node_data = "data/results/traits_{segment}.json",
     params:
@@ -267,10 +245,10 @@ rule export:
     message: "Exporting data files for auspice"
     input:
         tree = rules.refine.output.tree,
-        metadata = rules.genoflu_postprocess.output.metadata,
+        metadata = rules.genoflu.output.metadata,
         node_data = [rules.refine.output.node_data,rules.traits.output.node_data,rules.ancestral.output.node_data,rules.translate.output.node_data,files.vaccine_strains],
         auspice_config = rules.configs.output[0],
-        colors = "config/colors.tsv",
+        colors = rules.genoflu.output.colors,
         description = "config/description.md",
     output:
         auspice_json = "data/auspice/h5nx_{segment}.json"

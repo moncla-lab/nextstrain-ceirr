@@ -47,13 +47,14 @@ git submodule update --init
 
 ### Updating submodules when data changes:
 ```bash
-git submodule update --remote    # then add, commit, and push like usual
+git submodule update --remote
 ```
+
+Then add, commit, and push like usual.
 
 ### Submodule overview for maintainers:
 - **h5-data-updates**: Contains shared Genoflu analysis functions. Changes here affect both CEIRR and North America pipelines.
-- **GenoFLU-multi**: External tool for influenza genotyping. Update only when new versions are released.
-- **nextstrain_hpai_north_america**: Contains logic for preprocessing, running, and processing GenoFlu.
+- **nextstrain\_hpai\_north_america**: Contains logic for preprocessing, running, and processing GenoFlu.
 
 ## Uploading data
 

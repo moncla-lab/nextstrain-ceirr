@@ -54,13 +54,8 @@
       "type": "categorical"
     },
     {
-      "key": "genoflu_bin",
-      "title": "Genoflu annotation (major)",
-      "type": "categorical"
-    },
-    {
-      "key": "Genotype",
-      "title": "Genoflu annotation (all)",
+      "key": "genotype_ml",
+      "title": "GenoFLU genotype",
       "type": "categorical"
     }
   ],

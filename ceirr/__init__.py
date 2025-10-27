@@ -129,8 +129,8 @@ def create_segment_config(
     input_config_path, url_file_path, output_config_path, segment, ceirr_url_order
 ):
     """
-    Create segment-specific auspice config with CEIRR URL and GenoFlu coloring. Takes as input 
-    input config path, output config path, and information on the ceirr url. This includes 
+    Create segment-specific auspice config with CEIRR URL and GenoFlu coloring. Takes as input
+    input config path, output config path, and information on the ceirr url. This includes
     the url location of the fillable ceirr spreadsheet (url_file_path), and the ordering of
     the url in the auspice config. The ceirr_url_order should be set to to a 0-indexed integer
     that relates which maintainer link ceirr_url_order should reference
@@ -150,9 +150,10 @@ def create_segment_config(
         pass
 
     # Add the segment-specific genoflu coloring
+    segment_key = segment.upper()
     genoflu_coloring = {
-        "key": f"genoflu_{segment}_lineage",
-        "title": f"GenoFlu {segment.upper()} lineage",
+        "key": f"genoflu_{segment_key}",
+        "title": f"GenoFlu {segment_key} lineage",
         "type": "categorical",
     }
 
