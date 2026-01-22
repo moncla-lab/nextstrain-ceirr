@@ -8,6 +8,9 @@ from ceirr import phenotypic_characterization_annotation, split_phenotypes_excel
 from ceirr import create_segment_config
 from nextstrain_hpai_north_america.na_hpai import genoflu_postprocess, generate_genotype_colors
 
+# Adjust for dev (2-5) vs prod (15+) runs
+SEQUENCES_PER_GROUP = 15
+
 wildcard_constraints:
   segment="[^/]+"
 
@@ -36,12 +39,11 @@ rule unzip_h5nx:
 
 rule extract_excel:
     input:
-        "data/Phenotypic characterizations.xlsx"
+        "data/CEIRR RAP H5 Phenotypic Summary (Responses).xlsx"
     output:
-        phenotypes_tsv = 'data/phenotypes.tsv',
-        sources_tsv = 'data/sources.tsv'
+        phenotypes_tsv = 'data/phenotypes.tsv'
     run:
-        split_phenotypes_excel(input[0], output.phenotypes_tsv, output.sources_tsv)
+        split_phenotypes_excel(input[0], output.phenotypes_tsv)
 
 rule genoflu:
     input:
@@ -78,7 +80,7 @@ rule filter:
         sequences = "data/results/filtered_{segment}.fasta"
     params:
         group_by = "month host region genotype_ml", #month host location
-        sequences_per_group = 15,
+        sequences_per_group = SEQUENCES_PER_GROUP,
         min_date = 2021,
         min_length = min_length,  # instead of specifying one parameter value, we can use a function to specify minimum lengths that are unique to each segment
         exclude_where = "host=laboratoryderived host=ferret host=unknown host=other host=host country=? region=? h5_label_clade=Am-nonGsGD h5_label_clade=EA-nonGsGD"
@@ -269,12 +271,19 @@ rule annotate:
     input:
         auspice = rules.export.output.auspice_json,
         phenotypes = rules.extract_excel.output.phenotypes_tsv,
-        sources = rules.extract_excel.output.sources_tsv
+        strain_crossref = "maintenance_data/strain_crossref.tsv",
+        source_strings = "maintenance_data/source_strings.tsv",
+        sources = "maintenance_data/sources.tsv"
     output:
         "data/ml/h5nx_{segment}.json"
     run:
         phenotypic_characterization_annotation(
-            input.auspice, input.phenotypes, input.sources, output[0]
+            input.auspice,
+            input.phenotypes,
+            input.strain_crossref,
+            input.source_strings,
+            input.sources,
+            output[0]
         )
 
 rule clean:

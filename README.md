@@ -1,61 +1,191 @@
 # nextstrain-ceirr
 
-Nextstrain pipelines for [CEIRR](https://www.ceirr-network.org/).
+Nextstrain phylogenetic pipeline for [CEIRR](https://www.ceirr-network.org/) that integrates phenotypic characterization data with H5NX genomic sequences for Auspice visualization.
 
-## Usage
+## Overview
 
-Usage instructions assume you've successfully followed the installation instructions and have a basic understanding of [Nextstrain](https://nextstrain.org/).
+This pipeline combines:
 
-### Downloading the metadata
+- **Genomic data**: H5 sequences and metadata from `h5-data-updates/` submodule
+- **Phenotypic data**: Characterization results submitted via Google Form, downloaded as Excel
 
-Obtain a link to the phenotypes spreadsheet through the URL in the CEIRR hosted build. Place at `data/Phenotypic characterizations.xlsx`.
+The phenotypic data includes receptor binding, pathogenesis, transmission, and antiviral sensitivity results from CEIRR collaborators.
 
-To download a copy of the spreadsheet, from the main menu in Excel do: **File > Create a Copy > Download a Copy**.
-
-Run:
-
-```
-snakemake -j $NUMBER_OF_JOBS all
-```
-
-View:
+## Directory Structure
 
 ```
-nextstrain view data/ml
+nextstrain-ceirr/
+├── ceirr/                      	# Core pipeline module
+├── maintenance_data/           	# Maintainer-curated lookup tables (see below)
+├── h5-data-updates/            	# Submodule: shared H5 sequence data
+├── nextstrain_hpai_north_america/  # Submodule: GenoFlu + avian species logic
+├── config/                     	# References, strain lists, auspice config
+├── data/                       	# Working directory (generated + input spreadsheet)
+└── Snakefile                   	# Pipeline definition
 ```
 
+## Maintainer Workflow
+
+### When Phenotypic Data Changes
+
+1. **Download the spreadsheet** from Google Sheets:
+   - Open the CEIRR Nextstrain build and follow the link to the shared Google sheet
+   - Download using File → Download → Microsoft Excel (.xlsx)
+   - Save to `data/CEIRR RAP H5 Phenotypic Summary (Responses).xlsx`
+
+2. **Run the pipeline**:
+
+   ```bash
+   snakemake -j8 all  # Eight segments at once
+   ```
+
+3. **Check validation output** - the pipeline prints warnings:
+
+   ```
+   === Strain Cross-Reference Validation ===
+   MATCHED (28/40):
+     A/Chile/25945/2023 → A/Chile/25945/2023
+     ...
+   UNMATCHED (12/40) - add to maintenance_data/strain_crossref.tsv:
+     A/Texas/37/2024
+     ...
+
+   === Source String Validation ===
+   MATCHED (19/19):
+     ...
+   ```
+
+4. **Fix any UNMATCHED entries** (see sections below)
+
+5. **Re-run and verify** all strains/sources match
+
+6. **Run full pipeline**:
+
+   ```bash
+   snakemake -j4 all
+   ```
+
+### Adding a New Strain
+
+When a strain appears in UNMATCHED, you need to map the Google Sheet name to the ML database name.
+
+1. Find the strain in the tree/database to get the canonical name
+2. Add a row to `maintenance_data/strain_crossref.tsv`:
+
+   ```
+   A/Texas/37/2024	A/Texas/37/2024
+   ```
+
+   Note: Names often differ in spacing, abbreviations, or special characters:
+
+   ```
+   A/WA/255/2024	A/Washington/255/2024
+   A/bald eagle/Florida/W22-134-OP/2022 (Eagle/FL/22)	A/baldeagle/Florida/W22134OP/2022
+   ```
+
+### Adding a New Source
+
+When a source string appears in UNMATCHED:
+
+1. Add the exact string to `maintenance_data/source_strings.tsv` with source ID(s):
+
+   ```
+   New Author et al., Journal 2024	22
+   Penn-CEIRR and Emory-CEIRR	7,8
+   ```
+
+2. If the source ID is new, also add to `maintenance_data/sources.tsv`:
+
+   ```
+   22	New Author et al., Journal 2024	https://doi.org/...
+   ```
+
+   Leave URL empty for CEIRR center attributions (no publication link).
+
+## Maintenance Data Files
+
+### `maintenance_data/strain_crossref.tsv`
+
+Maps strain names from Google Sheet → ML database. Required because collaborators often use abbreviated or variant strain names.
+
+| Column | Description |
+|--------|-------------|
+| `google_sheet_metadata_strain` | Strain name as entered in Google Form |
+| `ml_database_strain` | Canonical name in ML database/tree |
+
+### `maintenance_data/source_strings.tsv`
+
+Maps exact source strings from spreadsheet → source IDs. Handles combined citations and typo variants.
+
+| Column | Description |
+|--------|-------------|
+| `source_string` | Exact string from "Source Preference/Publication" column |
+| `source_ids` | Comma-separated IDs referencing sources.tsv |
+
+### `maintenance_data/sources.tsv`
+
+Source details for Auspice display.
+
+| Column | Description |
+|--------|-------------|
+| `source_id` | Integer ID |
+| `name` | Display name in Auspice |
+| `url` | Publication URL (empty for CEIRR communications) |
 
 ## Installation
 
 [Install and configure Bioconda](https://bioconda.github.io/).
 
-Install dependencies:
-
-```
+```bash
 conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain
+conda activate nextstrain-ceirr
 ```
 
-Pull down this repository and dependent repositories:
+Clone and initialize:
 
-```
+```bash
 git clone https://github.com/moncla-lab/nextstrain-ceirr
 cd nextstrain-ceirr
 git submodule update --init
 ```
 
+## Running the Pipeline
+
+```bash
+# Full pipeline
+snakemake -j4 all
+
+# Single segment (faster for testing)
+snakemake -j4 data/ml/h5nx_ha.json
+
+# View results
+nextstrain view data/ml
+```
+
+### Dev Mode
+
+For faster iteration, edit `SEQUENCES_PER_GROUP` at the top of `Snakefile`:
+
+```python
+SEQUENCES_PER_GROUP = 2   # Dev: fast iteration
+SEQUENCES_PER_GROUP = 15  # Prod: full dataset
+```
+
 ## Submodule Management
 
-### Updating submodules when data changes:
+### Updating when upstream data changes
+
 ```bash
 git submodule update --remote
 ```
 
-Then add, commit, and push like usual.
+Then add, commit, and push.
 
-### Submodule overview for maintainers:
-- **h5-data-updates**: Contains shared Genoflu analysis functions. Changes here affect both CEIRR and North America pipelines.
-- **nextstrain\_hpai\_north_america**: Contains logic for preprocessing, running, and processing GenoFlu.
+### Submodules
 
-## Uploading data
+- **h5-data-updates**: H5 sequences, metadata, and CEIRR spreadsheet URL
+- **nextstrain\_hpai\_north\_america**: GenoFlu processing and species/flyway mappings
 
-Visit the [CEIRR web application](https://app.ceirr-network.org/) and navigate to the the Nextstrain tab. Privileged users will see options to upload new datasets and new narratives at the bottom of the Auspice page.
+## Uploading Results
+
+Visit the [CEIRR web application](https://app.ceirr-network.org/) and navigate to the Nextstrain tab. Privileged users can upload new datasets and narratives.
