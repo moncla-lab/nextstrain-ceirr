@@ -305,16 +305,6 @@ def create_segment_config(
     with open(input_config_path) as f:
         config = json.load(f)
 
-    # Read the URL from file and add to third maintainer
-    try:
-        with open(url_file_path) as f:
-            ceirr_url = f.read().strip()
-        if len(config.get("maintainers", [])) > 2:
-            config["maintainers"][ceirr_url_order]["url"] = ceirr_url
-    except FileNotFoundError:
-        # If URL file doesn't exist, continue without adding URL
-        pass
-
     # Add the segment-specific genoflu coloring
     segment_key = segment.upper()
     genoflu_coloring = {
