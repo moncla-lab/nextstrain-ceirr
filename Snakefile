@@ -39,7 +39,7 @@ rule unzip_h5nx:
 
 rule extract_excel:
     input:
-        "data/CEIRR RAP H5 Phenotypic Summary (Responses).xlsx"
+        "data/metadata.xlsx"
     output:
         phenotypes_tsv = 'data/phenotypes.tsv'
     run:

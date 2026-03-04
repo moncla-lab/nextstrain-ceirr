@@ -31,7 +31,7 @@ nextstrain-ceirr/
 1. **Download the spreadsheet** from Google Sheets:
    - Open the CEIRR Nextstrain build and follow the link to the shared Google sheet
    - Download using File → Download → Microsoft Excel (.xlsx)
-   - Save to `data/CEIRR RAP H5 Phenotypic Summary (Responses).xlsx`
+   - Copy the downloaded file into the `data/` directory and rename it to `metadata.xlsx` (the pipeline expects this exact filename)
 
 2. **Run the pipeline**:
 
@@ -136,17 +136,19 @@ Source details for Auspice display.
 
 [Install and configure Bioconda](https://bioconda.github.io/).
 
-```bash
-conda create -n nextstrain-ceirr pandas biopython blast openpyxl snakemake nextstrain
-conda activate nextstrain-ceirr
-```
-
 Clone and initialize:
 
 ```bash
 git clone https://github.com/moncla-lab/nextstrain-ceirr
 cd nextstrain-ceirr
 git submodule update --init
+```
+
+Create the conda environment from the included `environment.yml`:
+
+```bash
+conda env create -f environment.yml
+conda activate nextstrain-ceirr
 ```
 
 ## Running the Pipeline

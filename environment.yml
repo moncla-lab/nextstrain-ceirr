@@ -1,0 +1,17 @@
+name: nextstrain-ceirr
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.13.*
+  - pandas=2.*
+  - biopython=1.*
+  - blast=2.*
+  - openpyxl=3.*
+  - snakemake=9.*
+  - augur=33.*
+  - auspice=2.*
+  - treetime=0.11.*
+  - mafft=7.*
+  - iqtree=3.*
