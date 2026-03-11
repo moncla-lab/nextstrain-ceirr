@@ -195,4 +195,10 @@ cd nextstrain_hpai_north_america && git pull && cd ..
 
 ## Uploading Results
 
-Visit the [CEIRR web application](https://app.ceirr-network.org/) and navigate to the Nextstrain tab. Privileged users can upload new datasets and narratives.
+1. Sign in to the [CEIRR web application](https://app.ceirr-network.org/)
+2. Select the **Nextstrain** tab from the left sidebar
+   ![Nextstrain tab](NextstrainTab.png)
+3. Under **Admin Actions**, click **Upload new Datasets**
+   ![Nextstrain page with upload options](UploadDatasets.png)
+4. Drag and drop the JSON files from `data/ml/` into the upload area
+5. Initiate the upload
