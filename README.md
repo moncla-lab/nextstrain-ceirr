@@ -6,7 +6,7 @@ Nextstrain phylogenetic pipeline for [CEIRR](https://www.ceirr-network.org/) tha
 
 This pipeline combines:
 
-- **Genomic data**: H5 sequences and metadata from `h5-data-updates/` submodule
+- **Genomic data**: H5 sequences and metadata from `h5-data-updates/`
 - **Phenotypic data**: Characterization results submitted via Google Form, downloaded as Excel
 
 The phenotypic data includes receptor binding, pathogenesis, transmission, and antiviral sensitivity results from CEIRR collaborators.
@@ -17,8 +17,8 @@ The phenotypic data includes receptor binding, pathogenesis, transmission, and a
 nextstrain-ceirr/
 ├── ceirr/                      	# Core pipeline module
 ├── maintenance_data/           	# Maintainer-curated lookup tables (see below)
-├── h5-data-updates/            	# Submodule: shared H5 sequence data
-├── nextstrain_hpai_north_america/  # Submodule: GenoFlu + avian species logic
+├── h5-data-updates/            	# Cloned repo: shared H5 sequence data
+├── nextstrain_hpai_north_america/  # Cloned repo: GenoFlu + avian species logic
 ├── config/                     	# References, strain lists, auspice config
 ├── data/                       	# Working directory (generated + input spreadsheet)
 └── Snakefile                   	# Pipeline definition
@@ -136,12 +136,18 @@ Source details for Auspice display.
 
 [Install and configure Bioconda](https://bioconda.github.io/).
 
-Clone and initialize:
+Clone and set up dependencies:
 
 ```bash
 git clone https://github.com/moncla-lab/nextstrain-ceirr
 cd nextstrain-ceirr
-git submodule update --init
+
+# Clone dependencies at tested commits
+git clone https://github.com/moncla-lab/h5-data-updates.git
+cd h5-data-updates && git checkout 0971472333e4711b2c934d670f2c4fadc87461aa && cd ..
+
+git clone https://github.com/moncla-lab/nextstrain-hpai-north-america.git nextstrain_hpai_north_america
+cd nextstrain_hpai_north_america && git checkout 5f9b6f3dcb7f203cec43534e816920745b12adf8 && cd ..
 ```
 
 Create the conda environment from the included `environment.yml`:
@@ -173,17 +179,16 @@ SEQUENCES_PER_GROUP = 2   # Dev: fast iteration
 SEQUENCES_PER_GROUP = 15  # Prod: full dataset
 ```
 
-## Submodule Management
+## Updating Dependencies
 
-### Updating when upstream data changes
+When upstream data changes, pull the latest:
 
 ```bash
-git submodule update --remote
+cd h5-data-updates && git pull && cd ..
+cd nextstrain_hpai_north_america && git pull && cd ..
 ```
 
-Then add, commit, and push.
-
-### Submodules
+### Dependencies
 
 - **h5-data-updates**: H5 sequences, metadata, and CEIRR spreadsheet URL
 - **nextstrain\_hpai\_north\_america**: GenoFlu processing and species/flyway mappings

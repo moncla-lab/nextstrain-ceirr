@@ -1,6 +1,0 @@
-[submodule "h5-data-updates"]
-	path = h5-data-updates
-	url = ../h5-data-updates
-[submodule "nextstrain_hpai_north_america"]
-	path = nextstrain_hpai_north_america
-	url = ../nextstrain-hpai-north-america

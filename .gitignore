@@ -2,3 +2,6 @@ data
 .snakemake
 .DS_Store
 __pycache__
+config/colors.tsv
+h5-data-updates/
+nextstrain_hpai_north_america/
