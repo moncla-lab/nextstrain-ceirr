@@ -32,9 +32,9 @@ FEATURES             Location/Qualifiers
                      /segment="5"
                      /country="Czech Republic"
                      /collection_date="27-Sep-2021"
-     gene            22..>1513
+     gene            22..>1512
                      /gene="NP"
-     CDS             22..>1513
+     CDS             22..>1512
                      /gene="NP"
                      /codon_start=1
                      /product="nucleocapsid protein"

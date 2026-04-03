@@ -35,7 +35,7 @@ FEATURES             Location/Qualifiers
                      /collection_date="27-Sep-2021"
      gene            2..>982
                      /gene="M2"
-     CDS             join(2..27,716..>982)
+     CDS             join(2..27,716..>980)
                      /gene="M2"
                      /codon_start=1
                      /product="matrix protein 2"
