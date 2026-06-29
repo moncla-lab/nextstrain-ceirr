@@ -1,36 +1,41 @@
 google_sheet_metadata_strain	ml_database_strain
-A/American wigeon/South Carolina/22-000345-001/2021	A/AmericanWigeon/SouthCarolina/22000345001/2021
-A/bald eagle/Florida/W22-134-OP/2022 (Eagle/FL/22)	A/baldeagle/Florida/W22134OP/2022
-A/mink/Spain/22VIR12774-13_3869-2/2022	A/mink/Spain/22VIR127741338692/2022
-A/Chile/25945/2023	A/Chile/25945/2023
-A/black-headed gull /Netherlands/29/2017 (H5N6)	A/BlackheadedGull/Netherlands/29/2017
+A/American wigeon/South Carolina/22-000345-001/2021	A/AmericanWigeon/SouthCarolina/22-000345-001/2021
+A/bald eagle/Florida/W22-134-OP/2022 (Eagle/FL/22)	A/baldeagle/Florida/W22-134-OP/2022
+A/mink/Spain/22VIR12774-13_3869-2/2022	A/mink/Spain/22VIR12774-133869-2/2022
+A/black-headed gull /Netherlands/29/2017 (H5N6)	A/Black-headedGull/Netherlands/29/2017
 A/Hunan/09285/2021 (H5N6)	A/Hunan/9285/2021
 A/European Polecat /Netherlands/1/2022 (H5N1)	A/Europeanpolecat/Netherlands/1/2022
-A/turkey/Minnesota/22-010654-001/2022	A/turkey/Minnesota/22010654001original/2022
-A/raccoon/Washington/22-018406-002/2022	A/raccoon/Washington/22018406002original/2022
-A/red fox/Michigan/22-018712-001/2022	A/redfox/Michigan/22018712001original/2022
-A/turkey vulture/Wyoming/23-012565-001-original/2023	A/turkeyvulture/Wyoming/23012565001original/2023
-A/turkey vulture/Utah/23-014334-001-original/2023	A/turkeyvulture/Utah/23014334001original/2023
-A/turkey vulture/California/23-016941-001-original/2023	A/turkeyvulture/California/23016941001original/2023
-A/bald eagle/Florida/22-006544-004/2022	A/BaldEagle/Florida/22006544004/2022
-A/harbor seal/Maine/22-020983-002/2022	A/harborseal/Maine/22020983002original/2022
-A/Virginia opossum/Iowa/22-016780-001/2022	A/Virginiaopossum/Iowa/22016780001original/2022
-A/fox/Wisconsin/22-013774-002/2022	A/fox/Wisconsin/22013774002original/2022
+A/turkey/Minnesota/22-010654-001/2022	A/turkey/Minnesota/22-010654-001/2022
+A/raccoon/Washington/22-018406-002/2022	A/raccoon/Washington/22-018406-002/2022
+A/red fox/Michigan/22-018712-001/2022	A/redfox/Michigan/22-018712-001/2022
+A/turkey vulture/Wyoming/23-012565-001-original/2023	A/turkeyvulture/Wyoming/23-012565-001/2023
+A/turkey vulture/Utah/23-014334-001-original/2023	A/turkeyvulture/Utah/23-014334-001/2023
+A/turkey vulture/California/23-016941-001-original/2023	A/turkeyvulture/California/23-016941-001/2023
+A/bald eagle/Florida/22-006544-004/2022	A/BaldEagle/Florida/USDA-006544-004/2022
+A/harbor seal/Maine/22-020983-002/2022	A/harborseal/Maine/22-020983-002/2022
+A/Virginia opossum/Iowa/22-016780-001/2022	A/Virginiaopossum/Iowa/22-016780-001/2022
+A/fox/Wisconsin/22-013774-002/2022	A/fox/Wisconsin/22-013774-002/2022
 A/fox/Netherlands/1/2022 clade (H5N1)	A/Fox/Netherlands/EMC1/2022
-A/ dairy cattle/TX/8749001-original/2024 (H5N1)	A/dairycattle/Texas/24008749001/2024
+A/ dairy cattle/TX/8749001-original/2024 (H5N1)	A/dairycow/Texas/24-008749-001/2024
 A/bottlenose dolphin/Florida/UFTt2203/2022	A/bottlenosedolphin/Florida/UFTt2203/2022
-A/seal/QC/FAV-0836-00011/2022	A/HarborSeal/QC/FAV083611/2022
-A/mink/Spain/3691-8_22VIR10586-10/2022	A/Mink/Spain/3691822VIR1058610/202
-A/bovine/Ohio/B24OSU-439/2024	A/dairycow/Ohio/B24OSU439/2024
-A/bovine/Ohio/B24OSU-497/2024	A/dairycow/Ohio/B24OSU497/2024
+A/seal/QC/FAV-0836-00011/2022	A/HarborSeal/Quebec/FAV-0836-11/2022
+A/mink/Spain/3691-8_22VIR10586-10/2022	A/Mink/Spain/3691-822VIR10586-10/2022
+A/bovine/Ohio/B24OSU-439/2024	A/dairycow/Ohio/B24OSU-439/2024
+A/bovine/Ohio/B24OSU-497/2024	A/dairycow/Ohio/B24OSU-497/2024
 A/Michigan/90/2024	A/Michigan/90/2024
 A/duck/Korea/H493/2022(H5N1)	A/duck/Korea/H493/2022
 A/Texas/37/2024(H5N1)	A/Texas/37/2024
-A/dairy cattle/New Mexico/A240920343-93/2024(H5N1)	A/dairycattle/NewMexico/A24092034393/2024
+A/dairy cattle/New Mexico/A240920343-93/2024(H5N1)	A/dairycow/NewMexico/A240920343-93/2024
 A/California/147/2024	A/California/147/2024
 A/WA/255/2024	A/Washington/255/2024
 A/Texas/37/2024	A/Texas/37/2024
 A/Washington/239/2024	A/Washington/239/2024
-A/American_Crow/PEI/FAV-0035-6/2023	A/AmericanCrow/PEI/FAV00356/2023
+A/American_Crow/PEI/FAV-0035-6/2023	A/AmericanCrow/PrinceEdwardIsland/FAV-0035-6/2023
 A/Guangxi/10285/2021 (H5N6)	A/Guangxi/10285/2021
-A/Raccoon/PEI/FAV-0193-1/2023	A/Raccoon/PEI/FAV01931/2023
+A/Raccoon/PEI/FAV-0193-1/2023	A/Raccoon/PrinceEdwardIsland/FAV-0193-1/2023
+A/feline/Korea/M305–7/2023(H5N1)	A/feline/Korea/M305-7/2023|H5N1|
+A/feline/Korea/M302–6/2023(H5N1)	A/feline/Korea/M302-6/2023|H5N1|
+A/Chile/25945/2023	A/Chile/25945/2023
+A/seal/QC/FAV-0836-0007/2022	A/HarborSeal/Quebec/FAV-0836-7/2022
+A/seal/QC/FAV-0836-0008/2022	A/HarborSeal/Quebec/FAV-0836-8/2022
+A/seal/QC/FAV-0836-0009/2022	A/HarborSeal/Quebec/FAV-0836-9/2022
