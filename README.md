@@ -29,7 +29,7 @@ nextstrain-ceirr/
 ### When Phenotypic Data Changes
 
 1. **Download the spreadsheet** from Google Sheets:
-   - Open the CEIRR Nextstrain build and follow the link to the shared Google sheet
+   - Go to the `nextstrain-ceirr` Slack channel, look at the pin, and follow the link to the shared Google sheet
    - Download using File → Download → Microsoft Excel (.xlsx)
    - Copy the downloaded file into the `data/` directory and rename it to `metadata.xlsx` (the pipeline expects this exact filename)
 
