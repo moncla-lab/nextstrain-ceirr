@@ -404,12 +404,12 @@ A/turkey/Iowa/USDA006795001/2022
 A/Fox/Bayern/WS113/2022
 A/duck/Bangladesh/59013/2023
 A/duck/Bangladesh/59131/2023
-A/dairycow/Idaho/014338-001/2005
-A/dairycow/California/24033172001/2022 # incorrect date, nothing in cattle until 2024
-A/dairycow/California/24033172002/2022 # incorrect date, nothing in cattle until 2024
-A/dairycow/California/24033172003/2022 # incorrect date, nothing in cattle until 2024
-A/dairycow/Idaho/014338001/2005 # incorrect date, nothing in cattle until 2024
-A/dairycow/California/24033172-002/2022 # incorrect date, nothing in cattle until 2024
-A/dairycow/California/24033172-001/2022 # incorrect date, nothing in cattle until 2024
-A/dairycow/California/24033172-003/2022 # incorrect date, nothing in cattle until 2024
-A/dairycow/Idaho/014338-001/2005 # incorrect date, nothing in cattle until 2024
+# A/dairy cow/Idaho/014338-001/2005
+# A/dairycow/California/24033172001/2022 # incorrect date, nothing in cattle until 2024
+# A/dairycow/California/24033172002/2022 # incorrect date, nothing in cattle until 2024
+# A/dairycow/California/24033172003/2022 # incorrect date, nothing in cattle until 2024
+# A/dairycow/Idaho/014338001/2005 # incorrect date, nothing in cattle until 2024
+# A/dairycow/California/24033172-002/2022 # incorrect date, nothing in cattle until 2024
+# A/dairycow/California/24033172-001/2022 # incorrect date, nothing in cattle until 2024
+# A/dairycow/California/24033172-003/2022 # incorrect date, nothing in cattle until 2024
+# A/dairycow/Idaho/014338-001/2005 # incorrect date, nothing in cattle until 2024

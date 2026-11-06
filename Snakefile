@@ -9,7 +9,8 @@ from ceirr import create_segment_config
 from nextstrain_hpai_north_america.na_hpai import genoflu_postprocess, generate_genotype_colors
 
 # Adjust for dev (2-5) vs prod (15+) runs
-SEQUENCES_PER_GROUP = 15
+SEQUENCES_PER_GROUP = 15 # maybe next time make this 11 so that the build isn't as large
+# this way, it won't take as long to load on the CEIRR network website.
 
 wildcard_constraints:
   segment="[^/]+"
@@ -83,7 +84,10 @@ rule filter:
         sequences_per_group = SEQUENCES_PER_GROUP,
         min_date = 2021,
         min_length = min_length,  # instead of specifying one parameter value, we can use a function to specify minimum lengths that are unique to each segment
-        exclude_where = "host=laboratoryderived host=ferret host=unknown host=other host=host country=? region=? h5_label_clade=Am-nonGsGD h5_label_clade=EA-nonGsGD"
+        exclude_where = "host=laboratoryderived host=ferret host=unknown host=other host=host country=? region=? label_clade=Am-nonGsGD label_clade=EA-nonGsGD", #no h5_label clade just label_clade
+        query = ("~(host == 'Cattle' & date < '2024-01-01') " "& host.isin(['Human', 'Nonhuman Mammal', 'Avian', 'Cattle', 'Environment'])"),  # query allows you to filter rows specified in your strings.
+    # In this case, everything that is NOT a cattle & has a date before 2024-01-01
+    # And then also every row that has a host in the listed hosts
     shell:
         """
         augur filter \
@@ -91,14 +95,16 @@ rule filter:
             --metadata {input.metadata} \
             --exclude {input.exclude} \
             --include {input.include} \
-            --output {output.sequences} \
+            --output-sequences {output.sequences} \
             --group-by {params.group_by} \
             --sequences-per-group {params.sequences_per_group} \
             --min-date {params.min_date} \
             --exclude-where {params.exclude_where} \
             --min-length {params.min_length} \
-            --non-nucleotide
+            --non-nucleotide \
+            --query "{params.query}"
         """
+        # had to add the --query line to these commands in bash
 
 rule align:
     message:
@@ -217,8 +223,8 @@ rule traits:
     output:
         node_data = "data/results/traits_{segment}.json",
     params:
-        columns = lambda wc: f"host region country division flyway Domestic_Status genoflu_bin Genotype genoflu_{wc.segment}_lineage",
-    shell:
+        columns = lambda wc: f"host region country flyway domestic_status genoflu_bin Genotype genoflu_{wc.segment}_lineage genotype_ml", # changed domestic status to match metadata columns & removed division bc >300 states
+    shell: # genoflu_bin, Genotype, and genoflu_segment_lineage don't exist in the metadata files that I'm looking at so I'm confused.
         """
         augur traits \
             --tree {input.tree} \
@@ -227,6 +233,28 @@ rule traits:
             --columns {params.columns} \
             --confidence
         """
+
+
+# columns = lambda wc: f"host region country flyway domestic_status genoflu_bin Genotype genoflu_{wc.segment}_lineage genotype_ml",
+# # previous rule traits that is erroring out
+# rule traits:
+#     message: "Inferring ancestral traits for {params.columns!s}"
+#     input:
+#         tree = rules.refine.output.tree,
+#         metadata = rules.genoflu.output.metadata
+#     output:
+#         node_data = "data/results/traits_{segment}.json",
+#     params:
+#         columns = lambda wc: f"host region country division flyway Domestic_Status genoflu_bin Genotype genoflu_{wc.segment}_lineage",
+#     shell:
+#         """
+#         augur traits \
+#             --tree {input.tree} \
+#             --metadata {input.metadata} \
+#             --output {output.node_data} \
+#             --columns {params.columns} \
+#             --confidence
+#         """
 
 rule configs:
     input:
